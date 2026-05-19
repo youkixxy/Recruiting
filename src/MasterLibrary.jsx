@@ -262,14 +262,14 @@ const PRESETS = {
     deloitteSABullets:["dsa1_std","dsa3","dsa4","dsa2","dsa_cfo"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec1","nec_sapdash"],
     skillsVariant:"standard", showHobbies:false, communityVariant:"short",
-    objective:"CFA Level III candidate, Washington State CPA, and Duke MBA with 10+ years of financial analysis and valuation across tech, healthcare, and manufacturing. Proven expertise in investment screening, financial modeling, and data-driven analytical insights to support buy/sell/hold decisions." },
+    objective:"CFA Level III candidate, Washington CPA, and Duke MBA with 10+ years of financial analysis and valuation across tech, healthcare, and manufacturing. Proven expertise in investment screening, financial modeling, and data-driven analytical insights to support buy/sell/hold decisions." },
   "Risk Analysis": {
     ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
     coursework:["Corporate Finance","Valuation and Fundamental Analysis","Data Analytics for Business","Finance Data Analytics","Tax for Global Management","Foundations of Strategy"],
     deloitteSABullets:["dsa1_std","dsa4","dsa_lean","dsa2","dsa_cfo"],
     deloitteAssocBullets:["da1_esg2","da2"], necBullets:["nec1","nec_erp"],
     skillsVariant:"standard", showHobbies:false, communityVariant:"short",
-    objective:"Washington State CPA, CFA III candidate, and Duke MBA with 10+ years of risk identification, internal controls, and audit expertise at Deloitte. Proven ability to detect $3.6M financial fraud, optimize controls frameworks, and deliver risk insights to C-suite stakeholders across multinational environments." },
+    objective:"Washington CPA, CFA III candidate, and Duke MBA with 10+ years of risk identification, internal controls, and audit expertise at Deloitte. Proven ability to detect $3.6M financial fraud, optimize controls frameworks, and deliver risk insights to C-suite stakeholders across multinational environments." },
 };
 
 // ── Per-preset keyword sets (for instant match analysis without JD) ──
@@ -582,7 +582,7 @@ function ResumeContentTab(){
       <Row label="描述">Awarded first-honor academic-based scholarship (top 5%); Outstanding student leader scholarship</Row>
     </Card>
     <SectionTitle>📜 证书（5张）</SectionTitle>
-    <Card>{[{n:"CFA Exam Level III Candidate",t:"Finance",u:"全部岗位"},{n:"U.S. Certified Public Accountant (Washington State), Licensed January 2022",t:"Finance",u:"全部岗位"},{n:"AWS Certified Solutions Architect – Associate",t:"Tech",u:"Tech/IT/Cloud"},{n:"Oracle Certified Professional, Oracle Master Gold 11g",t:"Tech",u:"ERP/IT Systems"},{n:"Fundamental & Applied IT Engineer (IPA Japan) – Passed",t:"Tech",u:"日企/IT方向"}].map(c=><div key={c.n} style={{display:"flex",alignItems:"center",gap:10,marginBottom:8,paddingBottom:8,borderBottom:`1px solid ${T.border}`}}>
+    <Card>{[{n:"CFA Exam Level III Candidate",t:"Finance",u:"全部岗位"},{n:"U.S. Certified Public Accountant (Washington), Licensed January 2022",t:"Finance",u:"全部岗位"},{n:"AWS Certified Solutions Architect – Associate",t:"Tech",u:"Tech/IT/Cloud"},{n:"Oracle Certified Professional, Oracle Master Gold 11g",t:"Tech",u:"ERP/IT Systems"},{n:"Fundamental & Applied IT Engineer (IPA Japan) – Passed",t:"Tech",u:"日企/IT方向"}].map(c=><div key={c.n} style={{display:"flex",alignItems:"center",gap:10,marginBottom:8,paddingBottom:8,borderBottom:`1px solid ${T.border}`}}>
       <span style={{fontSize:13,color:T.text,flex:1,fontWeight:500}}>{c.n}</span>
       <Chip label={c.t} bg={c.t==="Finance"?"#eff6ff":"#f5f3ff"} color={c.t==="Finance"?"#1e40af":"#6d28d9"} bd={c.t==="Finance"?"#bfdbfe":"#ddd6fe"}/>
       <span style={{fontSize:11,color:T.text3,width:110,flexShrink:0,textAlign:"right"}}>{c.u}</span>
@@ -826,7 +826,7 @@ function ResumeDoc({cfg,kws,showDiff,overrides}){
     <RRow left="NEC Solution Innovators, Ltd." right="Tokyo, Japan" mt={5}/><RRow left="IT Consultant (System Engineer)" right="2015–2018" bold={false} italic/>
     <BulletList ids={cfg.necBullets||[]} kws={kwsArr} overrides={overrides}/>
     <RSH title="ADDITIONAL INFORMATION"/>
-    <PlainList kws={kwsArr} items={["Certifications: U.S. CPA (Washington State), Licensed 2022; CFA Exam Level III Candidate; AWS Certified Solutions Architect – Associate",`Skills: ${SKILLS_TEXT[cfg.skillsVariant]||SKILLS_TEXT.standard}`,"Languages: Chinese (Native), Japanese (Fluent)",`Community Involvement: ${COMMUNITY[cfg.communityVariant]||COMMUNITY.full}`,cfg.showHobbies?"Hobbies: Developed tools such as real estate analytics app that saved 30+ hours in property research":null]}/>
+    <PlainList kws={kwsArr} items={["Certifications: U.S. CPA (Washington), Licensed 2022; CFA Exam Level III Candidate; AWS Certified Solutions Architect – Associate",`Skills: ${SKILLS_TEXT[cfg.skillsVariant]||SKILLS_TEXT.standard}`,"Languages: Chinese (Native), Japanese (Fluent)",`Community Involvement: ${COMMUNITY[cfg.communityVariant]||COMMUNITY.full}`,cfg.showHobbies?"Hobbies: Developed tools such as real estate analytics app that saved 30+ hours in property research":null]}/>
   </div>;
 }
 
@@ -1245,10 +1245,10 @@ function CombinedAnalysisTab(){
 
 // ── Preset categories for grouped display ────────────────────────────
 const PRESET_CATEGORIES = {
-  "Finance & Accounting": ["FP&A","Investment Analysis","Risk Analysis","Financial Analyst","Investment Banking"],
-  "Strategy & Corp Dev":  ["Corporate Development","PE / VC","Startup Strategic Finance"],
-  "Analytics & Tech":     ["Data Analytics","Tech Company Finance","Business Analyst"],
-  "Ops & Consulting":     ["Consulting","BizOps / Operations"],
+  "Corporate Finance":    ["FP&A","Financial Analyst","Tech Company Finance","Startup Strategic Finance"],
+  "Investment & Deals":   ["Investment Analysis","Investment Banking","Corporate Development","PE / VC"],
+  "Risk & Advisory":      ["Risk Analysis","Consulting","Business Analyst"],
+  "Data & Operations":    ["Data Analytics","BizOps / Operations"],
   "Specialized":          ["Healthcare Finance","ESG / Sustainability"],
 };
 
@@ -1543,7 +1543,7 @@ function TailorTab(){
     </div>
 
     {/* ── MIDDLE (flex ~400px) — Resume preview ── */}
-    <div style={{flex:"0 0 400px",borderRight:`1px solid ${T.border}`,display:"flex",flexDirection:"column",overflow:"hidden"}}>
+    <div style={{flex:1,minWidth:320,borderRight:`1px solid ${T.border}`,display:"flex",flexDirection:"column",overflow:"hidden"}}>
       {/* Toolbar */}
       <div style={{display:"flex",alignItems:"center",gap:5,padding:"6px 10px",borderBottom:`1px solid ${T.border}`,background:"#fafafa",flexShrink:0,flexWrap:"wrap"}}>
         <span style={{fontSize:10.5,fontWeight:700,color:T.text3}}>📄 预览</span>
@@ -1577,8 +1577,8 @@ function TailorTab(){
       </div>
     </div>
 
-    {/* ── RIGHT (flex) — Analysis sections stacked ── */}
-    <div style={{flex:1,overflowY:"auto",minWidth:0}}>
+    {/* ── RIGHT (360px) — Analysis sections stacked ── */}
+    <div style={{flex:"0 0 360px",overflowY:"auto",borderLeft:`1px solid ${T.border}`}}>
       {!cfg&&<EmptyState msg="请先选择预设方向或分析JD"/>}
       {cfg&&<>
         <RSection id="match" title="🎯 关键词匹配" badge={matchData?`${matchData.score}%`:undefined}>
@@ -1711,6 +1711,39 @@ function CareerProfileTab(){
           {label:"延伸目标（时间允许再投）",  color:"#d97706", bg:"#fffbeb"},
           {label:"难度大（不建议主力资源）",  color:"#9ca3af", bg:"#f9fafb"},
         ].map(({label,color,bg})=><div key={label} style={{background:bg,border:`1px solid ${color}44`,borderRadius:8,padding:"6px 12px",fontSize:11.5,color,fontWeight:600}}>{label}</div>)}
+      </div>
+
+      {/* Target company lists */}
+      <div style={{marginTop:20}}>
+        <div style={{fontSize:13,fontWeight:700,color:T.text,marginBottom:14}}>🏢 目标公司清单（按方向）</div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
+          {[
+            {dir:"FP&A / Corporate Finance ★",color:"#16a34a",bg:"#f0fdf4",
+             companies:["Applied Materials","Lenovo","Tanium","Fujifilm Biotechnologies","NEC America","Hitachi America","Mitsubishi UFJ","DTCC","3M","Honeywell","Abbott","Johnson & Johnson","Emerson","Caterpillar","Thermo Fisher"],
+             note:"非科技类大型企业 + 日企关联公司；CPA+审计背景在此类FP&A岗最直接匹配"},
+            {dir:"Investment Analysis ★",color:"#16a34a",bg:"#f0fdf4",
+             companies:["BlackRock","Vanguard","State Street","PIMCO","Fidelity","T. Rowe Price","JPMorgan Asset Mgmt","Goldman Sachs AM","Nuveen","Baird","Raymond James","Morningstar"],
+             note:"资产管理优先于投行；CFA III + 审计背景在risk-adjusted分析岗有竞争力"},
+            {dir:"Risk Analysis",color:"#2563eb",bg:"#eff6ff",
+             companies:["Deloitte Risk Advisory","KPMG Advisory","EY Consulting","PwC Risk","Morgan Stanley","Wells Fargo","Bank of America","Barclays","MUFG","Mizuho","Sumitomo Mitsui"],
+             note:"四大风险咨询是最自然的路径延伸；日系银行因语言优势竞争力极高"},
+            {dir:"Tech Company Finance ★",color:"#16a34a",bg:"#f0fdf4",
+             companies:["Amazon","Microsoft","Meta","Intuit","Cisco","Salesforce","ServiceNow","Nvidia","AMD","Qualcomm","Workday","Snowflake","Databricks","Palantir","Stripe","Block (Square)"],
+             note:"FAANG + SaaS公司finance/FP&A team；ERP/SAP经验 + analytics skills在此类岗位有差异化"},
+            {dir:"PE / VC",color:"#7c3aed",bg:"#f5f3ff",
+             companies:["Duke Capital Partners（现有）","Andreessen Horowitz","General Catalyst","Insight Partners","Vista Equity","Thoma Bravo","Battery Ventures","SoftBank Vision Fund"],
+             note:"Duke Capital经历是敲门砖；专注科技/SaaS方向的PE更契合背景"},
+            {dir:"日企 / 亚太连接（三语优势）",color:"#059669",bg:"#f0fdf4",
+             companies:["Sony America","Panasonic North America","Toyota Financial Services","Honda Finance","Mazda","Kyocera","Ricoh","Canon USA","Fujitsu","NTT Data","Rakuten"],
+             note:"这是最被忽视的低竞争高胜率赛道；日语+CPA+审计几乎无竞争对手"},
+          ].map(co=><div key={co.dir} style={{background:co.bg,border:`1px solid ${co.color}33`,borderRadius:10,padding:"12px 14px"}}>
+            <div style={{fontSize:12,fontWeight:700,color:co.color,marginBottom:6}}>{co.dir}</div>
+            <div style={{display:"flex",flexWrap:"wrap",gap:4,marginBottom:7}}>
+              {co.companies.map(c=><span key={c} style={{background:"#fff",border:`1px solid ${co.color}44`,borderRadius:20,padding:"2px 9px",fontSize:10.5,color:T.text}}>{c}</span>)}
+            </div>
+            <div style={{fontSize:10.5,color:T.text3,lineHeight:1.5}}>{co.note}</div>
+          </div>)}
+        </div>
       </div>
     </div>}
 
