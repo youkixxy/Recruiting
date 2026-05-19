@@ -167,7 +167,7 @@ const BASELINE_CFG = {
   showCoursework:false, coursework:[],
   showWasedaDesc:true, showTianjinDesc:true,
   includeEqtyLyfe:false, eqtyLyfeRole:"intern", eqtyLyfeBullets:[],
-  deloitteMerged:true,
+  deloitteMerged:false,
   deloitteSABullets:["dsa1_std","dsa2","dsa3","dsa4","dsa5"],
   deloitteAssocBullets:["da1_std","da2"],
   necBullets:["nec1","nec2"],
@@ -256,22 +256,23 @@ const PRESETS = {
     deloitteAssocBullets:["da2","da1_std"], necBullets:["nec2","nec_training","nec_erp"],
     objective:"CPA, CFA III candidate, and Duke MBA with 10+ years of operations and process improvement across consulting, ERP implementation, and BPR. Delivered $5M in annual savings through workflow redesign and drove 40% system adoption improvement through change management.",
     keywords:["process improvement","operations","workflow","lean","six sigma","BPR","efficiency","change management","ERP","stakeholder","cost savings","headcount","automation","cross-functional","implementation"] },
-};
-
   "Investment Analysis": {
-    ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
+    ...BASELINE_CFG, dukeConcentration:"decision", showCoursework:true, showWasedaDesc:false,
     coursework:["Corporate Finance","Valuation and Fundamental Analysis","Investment","Global Asset Allocation","Finance Data Analytics","Corporate Restructuring"],
     deloitteSABullets:["dsa1_std","dsa3","dsa4","dsa2","dsa_cfo"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec1","nec_sapdash"],
     skillsVariant:"standard", showHobbies:false, communityVariant:"short",
-    objective:"CFA Level III candidate, Washington State CPA, and Duke MBA with 10+ years of financial analysis and valuation across tech, healthcare, and manufacturing. Proven expertise in investment screening, financial modeling, and data-driven analytical insights to support buy/sell/hold decisions." },
+    objective:"CFA Level III candidate, Washington State CPA, and Duke MBA with 10+ years of financial analysis and valuation across tech, healthcare, and manufacturing. Proven expertise in investment screening, financial modeling, and data-driven analytical insights to support buy/sell/hold decisions.",
+    keywords:["financial modeling","valuation","DCF","comparable analysis","investment analysis","equity research","financial analysis","P&L","due diligence","capital markets","portfolio","forecasting","KPI","SQL","Power BI","data-driven"] },
   "Risk Analysis": {
-    ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
+    ...BASELINE_CFG, dukeConcentration:"decision", showCoursework:true, showWasedaDesc:false,
     coursework:["Corporate Finance","Valuation and Fundamental Analysis","Data Analytics for Business","Finance Data Analytics","Tax for Global Management","Foundations of Strategy"],
     deloitteSABullets:["dsa1_std","dsa4","dsa_lean","dsa2","dsa_cfo"],
     deloitteAssocBullets:["da1_esg2","da2"], necBullets:["nec1","nec_erp"],
     skillsVariant:"standard", showHobbies:false, communityVariant:"short",
-    objective:"Washington State CPA, CFA III candidate, and Duke MBA with 10+ years of risk identification, internal controls, and audit expertise at Deloitte. Proven ability to detect $3.6M financial fraud, optimize controls frameworks, and deliver risk insights to C-suite stakeholders across multinational environments." },
+    objective:"Washington State CPA, CFA III candidate, and Duke MBA with 10+ years of risk identification, internal controls, and audit expertise at Deloitte. Proven ability to detect $3.6M financial fraud, optimize controls frameworks, and deliver risk insights to C-suite stakeholders across multinational environments.",
+    keywords:["risk analysis","risk assessment","internal controls","audit","compliance","fraud detection","risk management","financial risk","operational risk","regulatory","enterprise risk","stress testing","SOX","GAAP","IFRS","financial analysis","governance"] },
+};
 
 // ── Per-preset keyword sets (for instant match analysis without JD) ──
 const PRESET_KEYWORDS = {
@@ -810,12 +811,12 @@ function ResumeDoc({cfg,kws,showDiff,overrides}){
     {cfg.objective&&<><RSH title="OBJECTIVE"/><div style={{fontSize:9.7,lineHeight:1.5,color:"#111",paddingBottom:2}}>{hlKws(cfg.objective,kwsArr)}</div></>}
     <RSH title="EDUCATION"/>
     <RRow left="DUKE UNIVERSITY, The Fuqua School of Business" right="Durham, NC"/>
-    <RRow left={`Master of Business Administration${concStr}`} right="May 2026" bold={false}/>
+    <RRow left={`Master of Business Administration${concStr}`} right="Aug 2024 – May 2026" bold={false}/>
     <div style={{fontSize:9.5}}>GPA: 3.85/4; Merit-based scholarship; Dean's list; Finance Club; Tech Club; Consulting Club</div>
     {cfg.showCoursework&&cfg.coursework?.length>0&&<div style={{fontSize:9.5}}>Relevant Coursework: {cfg.coursework.join(", ")}</div>}
-    <RRow left="WASEDA UNIVERSITY" right="Tokyo, Japan" mt={4}/><RRow left="Master of Arts in Economics" right="Mar 2015" bold={false}/>
+    <RRow left="WASEDA UNIVERSITY" right="Tokyo, Japan" mt={4}/><RRow left="Master of Arts in Economics" right="Apr 2013 – Jun 2015" bold={false}/>
     {cfg.showWasedaDesc&&<div style={{fontSize:9.5}}>Applied econometric models to analyze cross-cultural market trends; Active member of Intercultural Communication Center; planned 10+ cross-culture-exchange events, engaging 10+ sponsors</div>}
-    <RRow left="TIANJIN UNIVERSITY OF FINANCE AND ECONOMICS" right="Tianjin, China" mt={4}/><RRow left="Bachelor of Arts in Japanese Language & Accounting" right="Jun 2012" bold={false}/>
+    <RRow left="TIANJIN UNIVERSITY OF FINANCE AND ECONOMICS" right="Tianjin, China" mt={4}/><RRow left="Bachelor of Arts in Japanese Language & Accounting" right="Sep 2008 – Jun 2012" bold={false}/>
     {cfg.showTianjinDesc&&<div style={{fontSize:9.5}}>Awarded first-honor academic-based scholarship (top 5%); Outstanding student leader scholarship</div>}
     <RSH title="EXPERIENCE"/>
     <RRow left="Duke Capital Partners" right="Durham, NC"/><RRow left="Investment Associate" right="2025–Present" bold={false} italic/>
@@ -827,7 +828,7 @@ function ResumeDoc({cfg,kws,showDiff,overrides}){
     <RRow left="NEC Solution Innovators, Ltd." right="Tokyo, Japan" mt={5}/><RRow left="IT Consultant (System Engineer)" right="2015–2018" bold={false} italic/>
     <BulletList ids={cfg.necBullets||[]} kws={kwsArr} overrides={overrides}/>
     <RSH title="ADDITIONAL INFORMATION"/>
-    <PlainList kws={kwsArr} items={["Certifications: U.S. CPA (Washington State), Licensed 2022; CFA Exam Level III Candidate; AWS Certified Solutions Architect – Associate",`Skills: ${SKILLS_TEXT[cfg.skillsVariant]||SKILLS_TEXT.standard}`,"Languages: Chinese (Native), Japanese (Fluent)",`Community Involvement: ${COMMUNITY[cfg.communityVariant]||COMMUNITY.full}`,cfg.showHobbies?"Hobbies: Developed tools such as real estate analytics app that saved 30+ hours in property research":null]}/>
+    <PlainList kws={kwsArr} items={[`Skills: ${SKILLS_TEXT[cfg.skillsVariant]||SKILLS_TEXT.standard}`,"Languages: Chinese (Native), Japanese (Fluent)",`Community Involvement: ${COMMUNITY[cfg.communityVariant]||COMMUNITY.full}`,cfg.showHobbies?"Hobbies: Developed tools such as real estate analytics app that saved 30+ hours in property research":null]}/>
   </div>;
 }
 
@@ -855,7 +856,8 @@ function MatchTab({cfg,jdKeywords,matched,missing,score,onApply}){
     const id=relIds[0];
     const original=B[id].text;
     try{
-      const rwKey = typeof sessionStorage !== "undefined" ? sessionStorage.getItem("anthropic_api_key") : ""; if (!rwKey){setAiRewrite(p=>({...p,[kw]:{type:"error",msg:"请先输入 API Key"}}));setRewriting(null);return;}
+      const rwKey = typeof sessionStorage !== "undefined" ? sessionStorage.getItem("anthropic_api_key") : "";
+      if (!rwKey) { setAiRewrite(p=>({...p,[kw]:{type:"error",msg:"请先输入 API Key"}})); setRewriting(null); return; }
       const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":rwKey,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:600,messages:[{role:"user",content:`Rewrite this resume bullet 3 different ways to naturally include the keyword "${kw}" without changing factual claims. Keep the same impact metrics and structure. Return ONLY a JSON array of 3 strings, no other text:\n\nOriginal: ${original}`}]})});
       const data=await res.json();
       if(data.error) throw new Error(data.error.message);
@@ -1194,8 +1196,11 @@ RULES:
 - jdKeywords: 12-18 terms — for each concept include MULTIPLE surface forms (e.g. "financial modeling" AND "financial model" AND "financial analysis") to maximize ATS matching recall
 - objective: mirror JD role title + top 2 candidate credentials`;
 
+  // API key: read from sessionStorage (never hardcoded — user enters it in the UI)
   const apiKey = typeof sessionStorage !== "undefined" ? sessionStorage.getItem("anthropic_api_key") : "";
-  if (!apiKey) return Promise.reject(new Error("请先在右上角输入 Anthropic API Key 以使用AI功能（本地分析无需API Key）"));
+  if (!apiKey) {
+    return Promise.reject(new Error("请先在右上角输入 Anthropic API Key 以使用AI功能（本地分析无需API Key）"));
+  }
   const fetchP=fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":apiKey,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,messages:[{role:"user",content:prompt}]})})
   .then(async r=>{if(cancelRef?.current)throw new Error("已取消");if(!r.ok){const t=await r.text().catch(()=>"");throw new Error(`HTTP ${r.status}: ${t.slice(0,100)}`);}return r.json();})
   .then(d=>{if(cancelRef?.current)throw new Error("已取消");if(d.error)throw new Error(`API: ${d.error.message}`);const raw=d.content.map(c=>c.text||"").join("");return {...JSON.parse(raw.replace(/```json|```/g,"").trim()),gpa:"3.85"};});
@@ -1243,38 +1248,10 @@ function CombinedAnalysisTab(){
   </div>;
 }
 
-
-// ── Preset categories for grouped display ────────────────────────────
-const PRESET_CATEGORIES = {
-  "Finance & Accounting": ["FP&A","Investment Analysis","Risk Analysis","Financial Analyst","Investment Banking"],
-  "Strategy & Corp Dev":  ["Corporate Development","PE / VC","Startup Strategic Finance"],
-  "Analytics & Tech":     ["Data Analytics","Tech Company Finance","Business Analyst"],
-  "Ops & Consulting":     ["Consulting","BizOps / Operations"],
-  "Specialized":          ["Healthcare Finance","ESG / Sustainability"],
-};
-
-// ── Default FP&A JD (pre-filled for demo/instant use) ────────────────
-const DEFAULT_JD = `We are seeking a Financial Planning & Analysis (FP&A) Analyst to join our Finance team. The ideal candidate will support the annual operating planning (AOP), variance analysis, budgeting, and forecasting processes across business units.
-
-Key Responsibilities:
-• Partner with business teams to develop financial models, forecasts, and budgets
-• Lead monthly variance analysis and provide data-driven insights to senior leadership
-• Manage the annual operating planning (AOP) cycle with cross-functional coordination
-• Build and maintain Power BI dashboards and reporting automation to improve efficiency
-• Analyze KPIs, P&L trends, and cash flow to support strategic decision-making
-• Present financial summaries and recommendations to CFO and finance executives
-
-Qualifications:
-• Bachelor's degree in Finance, Accounting, or Economics; MBA preferred
-• CPA or CFA designation preferred
-• 3-5 years of FP&A, financial analysis, or related experience
-• Advanced Excel (financial modeling), SQL, and ERP system proficiency
-• Experience with BI tools (Power BI, Tableau) and data automation
-• Excellent communication skills; ability to work cross-functionally`;
-
 function TailorTab(){
-  const [jd,setJd]=useState(DEFAULT_JD);
+  const [jd,setJd]=useState("");
   const [loading,setLoading]=useState(false);
+  const [aiMode,setAiMode]=useState(false);     // false=local instant, true=AI
   const [elapsed,setElapsed]=useState(0);
   const [cfg,setCfg]=useState(null);
   const [notes,setNotes]=useState("");
@@ -1282,8 +1259,8 @@ function TailorTab(){
   const [showKwHl,setShowKwHl]=useState(true);
   const [jdKws,setJdKws]=useState([]);
   const [matchData,setMatchData]=useState(null);
-  const [localScores,setLocalScores]=useState(null);
-  const [activePreset,setActivePreset]=useState("FP&A");
+  const [localScores,setLocalScores]=useState(null);  // ranked preset scores
+  const [activePreset,setActivePreset]=useState(null);
   const [manualOpen,setManualOpen]=useState(false);
   const [customPresets,setCustomPresets]=useState({});
   const [savePresetName,setSavePresetName]=useState("");
@@ -1292,36 +1269,35 @@ function TailorTab(){
   const [editText,setEditText]=useState("");
   const [sectionOpen,setSectionOpen]=useState({match:true,report:false,interview:false,indkw:false});
   const cancelRef=useRef(false);
-  const isInitRef=useRef(false);
 
-  // Auto-load FP&A on first render
-  React.useEffect(()=>{
-    if(!isInitRef.current){ isInitRef.current=true; loadPreset("FP&A"); }
-  },[]);
-
+  // ── Preset loading ───────────────────────────────────────────
   function loadPreset(name){
     const p=customPresets[name]||PRESETS[name]; if(!p) return;
     const kws=PRESET_KEYWORDS[name]||[];
     const newCfg={...p,gpa:"3.85"};
     setCfg(newCfg); setNotes(`预设方向：${name}`); setActivePreset(name);
     setJdKws(kws); setMatchData(kws.length>0?computeMatch(newCfg,kws):null);
-    setBulletOverrides({}); setErr(""); setLocalScores(null);
+    setBulletOverrides({}); setErr("");
   }
-  function cancel(){cancelRef.current=true;setLoading(false);setErr("已取消");}
 
+  // ── Option A: Local instant analysis ────────────────────────
   function analyzeLocal(){
     if(!jd.trim()){setErr("请先粘贴JD内容");return;}
     setErr("");
     const {scores,extractedKws}=analyzeJDLocally(jd);
     setLocalScores(scores);
+    // Auto-load top preset
     const best=scores[0];
     const bestCfg={...PRESETS[best.name],gpa:"3.85"};
     setCfg(bestCfg); setActivePreset(best.name);
     setNotes(`本地分析（即时） · 最佳匹配：${best.name} (${best.score}%)`);
-    setJdKws(extractedKws); setMatchData(computeMatch(bestCfg,extractedKws));
+    setJdKws(extractedKws);
+    setMatchData(computeMatch(bestCfg,extractedKws));
     setBulletOverrides({});
   }
 
+  // ── Option B: AI detailed analysis ──────────────────────────
+  const cancel=()=>{cancelRef.current=true;setLoading(false);setErr("已取消");};
   async function analyzeAI(){
     if(!jd.trim()){setErr("请先粘贴JD内容");return;}
     cancelRef.current=false; setErr(""); setLoading(true);
@@ -1329,19 +1305,20 @@ function TailorTab(){
     const timer=setInterval(()=>setElapsed(s=>s+1),1000);
     async function tryOnce(){ const r=await callAI(jd,cancelRef); if(cancelRef.current)return null; return r; }
     try{
-      let result=await tryOnce(); if(!result)return;
+      let result=await tryOnce();
+      if(!result)return;
       const kws=result.jdKeywords||[];
       setCfg(result); setNotes(`AI分析 · ${result.notes||""}`);
       setJdKws(kws); setMatchData(computeMatch(result,kws)); setActivePreset(null);
     }catch(e){
       if(cancelRef.current)return;
       if(e.message.includes("超时")){
-        setErr("⏳ 超时，重试中…");
+        setErr("⏳ 第一次超时，重试中…");
         try{
           const r2=await tryOnce();
           if(r2&&!cancelRef.current){
             const kws=r2.jdKeywords||[];
-            setCfg(r2); setNotes(`AI分析（重试） · ${r2.notes||""}`);
+            setCfg(r2); setNotes(`AI分析（重试成功）· ${r2.notes||""}`);
             setJdKws(kws); setMatchData(computeMatch(r2,kws)); setErr("");
           }
         }catch(e2){if(!cancelRef.current)setErr("❌ "+e2.message);}
@@ -1350,6 +1327,7 @@ function TailorTab(){
     finally{setLoading(false);clearInterval(timer);}
   }
 
+  // ── Bullet editing helpers ───────────────────────────────────
   function toggleBullet(id,section){
     if(!cfg)return;
     const key=section==="SA"?"deloitteSABullets":section==="Assoc"?"deloitteAssocBullets":"necBullets";
@@ -1362,7 +1340,8 @@ function TailorTab(){
     const key=section==="SA"?"deloitteSABullets":section==="Assoc"?"deloitteAssocBullets":"necBullets";
     const arr=[...(cfg[key]||[])]; const idx=arr.indexOf(id); if(idx===-1)return;
     const ni=dir==="up"?idx-1:idx+1; if(ni<0||ni>=arr.length)return;
-    [arr[idx],arr[ni]]=[arr[ni],arr[idx]]; setCfg({...cfg,[key]:arr});
+    [arr[idx],arr[ni]]=[arr[ni],arr[idx]];
+    setCfg({...cfg,[key]:arr});
   }
   function toggleSpecial(field){
     if(!cfg)return;
@@ -1387,8 +1366,7 @@ function TailorTab(){
     if(!cfg)return;
     const el=document.getElementById("resume-print"); const html=el?el.outerHTML:"";
     const full=`<!DOCTYPE html><html><head><meta charset="utf-8"><title>Xi (Shawn) Yang Resume</title><style>body{margin:0;padding:18mm;font-family:Georgia,'Times New Roman',serif;font-size:10.5pt;color:#111;line-height:1.35}mark{background:transparent!important;color:inherit}@page{margin:15mm;size:Letter}ul{padding-left:15pt}li{margin-bottom:2pt}</style></head><body>${html}</body></html>`;
-    try{const w=window.open("","_blank","width=900,height=700");if(w){w.document.write(full);w.document.close();setTimeout(()=>w.print(),600);}
-    else{const a=Object.assign(document.createElement("a"),{href:URL.createObjectURL(new Blob([full],{type:"text/html"})),download:"Resume.html"});document.body.appendChild(a);a.click();document.body.removeChild(a);}}
+    try{const w=window.open("","_blank","width=900,height=700");if(w){w.document.write(full);w.document.close();setTimeout(()=>w.print(),600);}else{const a=Object.assign(document.createElement("a"),{href:URL.createObjectURL(new Blob([full],{type:"text/html"})),download:"Resume.html"});document.body.appendChild(a);a.click();document.body.removeChild(a);}}
     catch(e){alert("请允许弹窗后重试");}
   }
 
@@ -1405,7 +1383,7 @@ function TailorTab(){
   function ManualPanel(){
     if(!cfg)return <div style={{fontSize:11.5,color:T.text3,fontStyle:"italic"}}>请先选择预设方向</div>;
     return <div>
-      <label style={{display:"flex",alignItems:"center",gap:7,cursor:"pointer",marginBottom:7}}>
+      <label style={{display:"flex",alignItems:"center",gap:7,cursor:"pointer",marginBottom:8}}>
         <input type="checkbox" checked={!!cfg.includeEqtyLyfe} onChange={()=>toggleSpecial("includeEqtyLyfe")} style={{cursor:"pointer"}}/>
         <span style={{fontSize:11.5,fontWeight:600}}>EQTY LYFE</span>
       </label>
@@ -1415,29 +1393,31 @@ function TailorTab(){
       </label>)}
       {MANUAL_SECTIONS.map(sec=>{
         const sel=(sec.key==="SA"?cfg.deloitteSABullets:sec.key==="Assoc"?cfg.deloitteAssocBullets:cfg.necBullets)||[];
-        return <div key={sec.key} style={{marginBottom:7}}>
-          <div style={{fontSize:9.5,fontWeight:700,color:T.text3,letterSpacing:.5,textTransform:"uppercase",marginBottom:3}}>{sec.label}</div>
+        return <div key={sec.key} style={{marginBottom:8}}>
+          <div style={{fontSize:9.5,fontWeight:700,color:T.text3,letterSpacing:.5,textTransform:"uppercase",marginBottom:4}}>{sec.label}</div>
           {sec.ids.map(id=>{
             const on=sel.includes(id); const idx=sel.indexOf(id); const isEd=editingId===id;
-            return <div key={id} style={{marginBottom:3,padding:"3px 5px",background:on?"#f0fdf4":T.bg,border:`1px solid ${on?"#bbf7d0":T.border}`,borderRadius:5}}>
-              <div style={{display:"flex",alignItems:"center",gap:3}}>
+            return <div key={id} style={{marginBottom:3,padding:"3px 6px",background:on?"#f0fdf4":T.bg,border:`1px solid ${on?"#bbf7d0":T.border}`,borderRadius:6}}>
+              <div style={{display:"flex",alignItems:"center",gap:4}}>
                 <input type="checkbox" checked={on} onChange={()=>toggleBullet(id,sec.key)} style={{cursor:"pointer",flexShrink:0}}/>
                 <IdBadge id={id}/>{bulletOverrides[id]&&<span style={{fontSize:9,color:"#7c3aed"}}>✏️</span>}
-                <span style={{flex:1,fontSize:10,color:on?T.text:T.text3,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{(bulletOverrides[id]||B[id]?.text||"").slice(0,50)}…</span>
+                <span style={{flex:1,fontSize:10,color:on?T.text:T.text3,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>
+                  {(bulletOverrides[id]||B[id]?.text||"").slice(0,55)}…
+                </span>
                 <div style={{display:"flex",gap:1,flexShrink:0}}>
                   {on&&<><button onClick={()=>moveBullet(id,sec.key,"up")} disabled={idx<=0} style={{background:"none",border:"none",cursor:idx>0?"pointer":"default",color:idx>0?T.text3:"#ddd",fontSize:10,padding:"0 2px"}}>↑</button>
                   <button onClick={()=>moveBullet(id,sec.key,"down")} disabled={idx>=sel.length-1} style={{background:"none",border:"none",cursor:idx<sel.length-1?"pointer":"default",color:idx<sel.length-1?T.text3:"#ddd",fontSize:10,padding:"0 2px"}}>↓</button></>}
-                  <button onClick={()=>isEd?saveEdit(id):startEdit(id)} style={{background:"none",border:`1px solid ${T.border}`,borderRadius:3,cursor:"pointer",color:"#7c3aed",fontSize:9.5,padding:"0 3px"}}>{isEd?"✓":"✏"}</button>
-                  {bulletOverrides[id]&&<button onClick={()=>resetOverride(id)} style={{background:"none",border:"none",cursor:"pointer",color:"#dc2626",fontSize:9.5}}>↩</button>}
+                  <button onClick={()=>isEd?saveEdit(id):startEdit(id)} style={{background:"none",border:`1px solid ${T.border}`,borderRadius:3,cursor:"pointer",color:"#7c3aed",fontSize:9.5,padding:"0 4px"}}>{isEd?"✓":"✏"}</button>
+                  {bulletOverrides[id]&&<button onClick={()=>resetOverride(id)} style={{background:"none",border:"none",cursor:"pointer",color:"#dc2626",fontSize:9.5,padding:"0 2px"}}>↩</button>}
                 </div>
               </div>
               {isEd&&<textarea value={editText} onChange={e=>setEditText(e.target.value)}
-                style={{width:"100%",marginTop:3,padding:"5px 7px",fontSize:11,border:"1px solid #ddd6fe",borderRadius:5,background:"#faf5ff",lineHeight:1.5,resize:"vertical",outline:"none",fontFamily:"inherit",boxSizing:"border-box",minHeight:55}}/>}
+                style={{width:"100%",marginTop:4,padding:"5px 7px",fontSize:11,border:"1px solid #ddd6fe",borderRadius:5,background:"#faf5ff",lineHeight:1.5,resize:"vertical",outline:"none",fontFamily:"inherit",boxSizing:"border-box",minHeight:60}}/>}
             </div>;
           })}
         </div>;
       })}
-      <label style={{display:"flex",alignItems:"center",gap:7,cursor:"pointer",marginBottom:7,marginTop:3}}>
+      <label style={{display:"flex",alignItems:"center",gap:7,cursor:"pointer",marginBottom:8,marginTop:4}}>
         <input type="checkbox" checked={!!cfg.deloitteMerged} onChange={()=>toggleSpecial("deloitteMerged")} style={{cursor:"pointer"}}/>
         <span style={{fontSize:11,color:T.text}}>合并 Deloitte 职级（2018–2024）</span>
       </label>
@@ -1453,8 +1433,8 @@ function TailorTab(){
     const open=sectionOpen[id];
     return <div style={{borderBottom:`1px solid ${T.border}`}}>
       <button onClick={()=>setSectionOpen(s=>({...s,[id]:!s[id]}))}
-        style={{width:"100%",background:open?"#f8f9ff":T.surface,border:"none",padding:"9px 14px",display:"flex",alignItems:"center",gap:8,cursor:"pointer",fontFamily:"inherit",textAlign:"left",flexShrink:0}}>
-        <span style={{fontSize:12,fontWeight:700,color:open?T.accent:T.text}}>{title}</span>
+        style={{width:"100%",background:open?"#f8f9ff":T.surface,border:"none",padding:"10px 16px",display:"flex",alignItems:"center",gap:8,cursor:"pointer",fontFamily:"inherit",textAlign:"left"}}>
+        <span style={{fontSize:12.5,fontWeight:700,color:open?T.accent:T.text}}>{title}</span>
         {badge&&<span style={{background:T.accentBg,color:T.accent,border:"1px solid #bfdbfe",borderRadius:20,padding:"1px 8px",fontSize:11,fontWeight:700}}>{badge}</span>}
         <span style={{marginLeft:"auto",fontSize:11,color:T.text3}}>{open?"▲":"▼"}</span>
       </button>
@@ -1462,138 +1442,141 @@ function TailorTab(){
     </div>;
   }
 
-  // ── 3-COLUMN LAYOUT ─────────────────────────────────────────────────
-  return <div style={{display:"flex",height:"100%",overflow:"hidden"}}>
+  // ── 2-column layout ─────────────────────────────────────────
+  return <div style={{display:"flex",height:"100%",gap:0,overflow:"hidden"}}>
 
-    {/* ── LEFT (270px) — presets by category + JD + controls ── */}
-    <div style={{width:270,flexShrink:0,borderRight:`1px solid ${T.border}`,display:"flex",flexDirection:"column",overflow:"hidden"}}>
-      <div style={{flex:1,overflowY:"auto",padding:"10px 12px",display:"flex",flexDirection:"column",gap:8}}>
-        {/* Presets grouped by category */}
-        <div>
-          <div style={{fontSize:9,fontWeight:700,color:T.text3,letterSpacing:1.5,textTransform:"uppercase",marginBottom:7}}>预设方向</div>
-          {Object.entries(PRESET_CATEGORIES).map(([cat,names])=>(
-            <div key={cat} style={{marginBottom:8}}>
-              <div style={{fontSize:9.5,fontWeight:600,color:"#6b7280",marginBottom:4,paddingLeft:2}}>{cat}</div>
-              <div style={{display:"flex",flexWrap:"wrap",gap:4}}>
-                {names.filter(n=>PRESETS[n]).map(name=>(
-                  <button key={name} onClick={()=>loadPreset(name)} style={{background:activePreset===name?T.accentBg:T.surface,border:`1px solid ${activePreset===name?"#bfdbfe":T.border}`,borderRadius:7,padding:"3px 9px",color:activePreset===name?T.accent:T.text2,fontSize:10.5,cursor:"pointer",fontFamily:"inherit",fontWeight:activePreset===name?700:400,whiteSpace:"nowrap"}}>
-                    {name}
-                  </button>
-                ))}
-                {/* Custom presets */}
-                {Object.keys(customPresets).map(name=>(
-                  <button key={name} onClick={()=>loadPreset(name)} style={{background:activePreset===name?T.accentBg:"#faf5ff",border:`1px solid ${activePreset===name?"#bfdbfe":"#ddd6fe"}`,borderRadius:7,padding:"3px 9px",color:activePreset===name?T.accent:"#6d28d9",fontSize:10.5,cursor:"pointer",fontFamily:"inherit",fontWeight:700}}>
-                    ★ {name}
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
+    {/* ── LEFT COLUMN (420px) — controls + analysis ── */}
+    <div style={{width:420,flexShrink:0,borderRight:`1px solid ${T.border}`,display:"flex",flexDirection:"column",overflow:"hidden"}}>
+
+      {/* ─ Top controls ─ */}
+      <div style={{padding:"12px 14px",borderBottom:`1px solid ${T.border}`,background:"#fafafa",flexShrink:0,overflowY:"auto",maxHeight:"55%"}}>
+
+        {/* Preset buttons */}
+        <div style={{marginBottom:10}}>
+          <div style={{fontSize:9,fontWeight:700,color:T.text3,letterSpacing:1.5,textTransform:"uppercase",marginBottom:6}}>预设方向</div>
+          <div style={{display:"flex",flexWrap:"wrap",gap:4}}>
+            {allPresetNames.map(name=>{
+              const isCust=!!customPresets[name];
+              return <button key={name} onClick={()=>loadPreset(name)} style={{background:activePreset===name?T.accentBg:T.surface,border:`1px solid ${activePreset===name?"#bfdbfe":isCust?"#ddd6fe":T.border}`,borderRadius:7,padding:"4px 9px",color:activePreset===name?T.accent:isCust?"#6d28d9":T.text2,fontSize:10.5,cursor:"pointer",fontFamily:"inherit",fontWeight:activePreset===name?700:400}}>
+                {isCust?"★ ":""}{name}
+              </button>;
+            })}
+          </div>
         </div>
-
-        <div style={{height:1,background:T.border}}/>
-
-        {/* Manual edit */}
-        <button onClick={()=>setManualOpen(o=>!o)} style={{background:manualOpen?"#f5f3ff":"#fafafa",border:`1px solid ${manualOpen?"#ddd6fe":T.border}`,borderRadius:7,padding:"6px 11px",display:"flex",alignItems:"center",justifyContent:"space-between",cursor:"pointer",fontFamily:"inherit"}}>
-          <span style={{fontSize:11,fontWeight:700,color:manualOpen?"#6d28d9":T.text2}}>🎛 手动调整 Bullets</span>
-          <span style={{fontSize:10,color:T.text3}}>{Object.keys(bulletOverrides).length>0?`✏️${Object.keys(bulletOverrides).length} · `:""}{manualOpen?"▲":"▼"}</span>
-        </button>
-        {manualOpen&&<div style={{border:"1px solid #ddd6fe",borderRadius:8,padding:"10px 11px",background:"#faf5ff",maxHeight:360,overflowY:"auto"}}><ManualPanel/></div>}
-
-        <div style={{height:1,background:T.border}}/>
 
         {/* JD input */}
-        <div style={{fontSize:9,fontWeight:700,color:T.text3,letterSpacing:1.5,textTransform:"uppercase"}}>粘贴 JD（可编辑）</div>
-        <textarea value={jd} onChange={e=>setJd(e.target.value)} placeholder="Paste JD here..."
-          style={{height:130,background:"#fafafa",border:`1px solid ${T.border}`,borderRadius:7,padding:"8px 10px",color:T.text,fontSize:10.5,resize:"vertical",lineHeight:1.5,outline:"none",fontFamily:"inherit"}}/>
-        <div style={{display:"flex",gap:6}}>
-          <button onClick={analyzeLocal} style={{flex:1,background:"#f0fdf4",border:"1px solid #bbf7d0",borderRadius:7,padding:"8px 0",fontWeight:700,fontSize:11.5,color:"#166534",cursor:"pointer",fontFamily:"inherit"}}>⚡ 本地（即时）</button>
-          <button onClick={analyzeAI} disabled={loading} style={{flex:1,background:loading?"#e5e7eb":`linear-gradient(135deg,${T.accent},#1d4ed8)`,color:loading?T.text3:"#fff",border:"none",borderRadius:7,padding:"8px 0",fontWeight:700,fontSize:11.5,cursor:loading?"not-allowed":"pointer",fontFamily:"inherit"}}>
-            {loading?`AI ${elapsed}s…`:"✨ AI精调"}
-          </button>
-          {loading&&<button onClick={cancel} style={{background:"#fef2f2",border:"1px solid #fca5a5",borderRadius:7,padding:"8px 9px",color:"#dc2626",cursor:"pointer",fontSize:12,fontWeight:600}}>✕</button>}
+        <div style={{marginBottom:8}}>
+          <div style={{fontSize:9,fontWeight:700,color:T.text3,letterSpacing:1.5,textTransform:"uppercase",marginBottom:5}}>粘贴 JD</div>
+          <textarea value={jd} onChange={e=>setJd(e.target.value)} placeholder={"Paste JD here...\n\nA 本地即时分析（0秒）\nB AI精调（10-25秒）"}
+            style={{width:"100%",height:100,background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,padding:"8px 11px",color:T.text,fontSize:11,resize:"vertical",lineHeight:1.5,outline:"none",fontFamily:"inherit",boxSizing:"border-box"}}/>
+          <div style={{display:"flex",gap:6,marginTop:6}}>
+            {/* Option A — local instant */}
+            <button onClick={analyzeLocal} style={{flex:1,background:"#f0fdf4",border:"1px solid #bbf7d0",borderRadius:8,padding:"9px 0",fontWeight:700,fontSize:12,color:"#166534",cursor:"pointer",fontFamily:"inherit"}}>
+              ⚡ A. 本地分析（即时）
+            </button>
+            {/* Option B — AI */}
+            <button onClick={analyzeAI} disabled={loading} style={{flex:1,background:loading?"#e5e7eb":`linear-gradient(135deg,${T.accent},#1d4ed8)`,color:loading?T.text3:"#fff",border:"none",borderRadius:8,padding:"9px 0",fontWeight:700,fontSize:12,cursor:loading?"not-allowed":"pointer",fontFamily:"inherit"}}>
+              {loading?`✨ AI ${elapsed}s…`:"✨ B. AI精调"}
+            </button>
+            {loading&&<button onClick={cancel} style={{background:"#fef2f2",border:"1px solid #fca5a5",borderRadius:8,padding:"9px 10px",color:"#dc2626",cursor:"pointer",fontFamily:"inherit",fontSize:12,fontWeight:600}}>✕</button>}
+          </div>
+          {loading&&<div style={{width:"100%",height:3,background:"#f3f4f6",borderRadius:2,overflow:"hidden",marginTop:5}}>
+            <div style={{height:"100%",background:elapsed>70?"#d97706":T.accent,width:`${Math.min(elapsed/90*100,95)}%`,transition:"width .9s ease",borderRadius:2}}/>
+          </div>}
         </div>
-        {loading&&<div style={{height:3,background:"#f3f4f6",borderRadius:2,overflow:"hidden"}}><div style={{height:"100%",background:T.accent,width:`${Math.min(elapsed/90*100,95)}%`,transition:"width .9s ease",borderRadius:2}}/></div>}
 
-        {/* Local scores */}
-        {localScores&&<div>
-          <div style={{fontSize:9,fontWeight:700,color:T.text3,letterSpacing:1.5,textTransform:"uppercase",marginBottom:5}}>匹配度排名</div>
-          {localScores.slice(0,5).map((s,i)=>(
-            <div key={s.name} onClick={()=>loadPreset(s.name)} style={{display:"flex",alignItems:"center",gap:7,padding:"4px 7px",background:i===0?"#eff6ff":"#fafafa",border:`1px solid ${i===0?"#bfdbfe":T.border}`,borderRadius:6,cursor:"pointer",marginBottom:3}}>
-              <span style={{fontSize:10,fontWeight:700,color:T.text3,width:13}}>{i+1}</span>
-              <span style={{fontSize:11,fontWeight:i===0?700:400,color:i===0?T.accent:T.text,flex:1}}>{s.name}</span>
-              <div style={{width:60,height:4,background:"#e5e7eb",borderRadius:2,overflow:"hidden"}}>
-                <div style={{height:"100%",background:s.score>=60?"#16a34a":s.score>=40?"#d97706":"#9ca3af",width:`${s.score}%`,borderRadius:2}}/>
+        {/* Local scores display */}
+        {localScores&&<div style={{marginBottom:8}}>
+          <div style={{fontSize:9,fontWeight:700,color:T.text3,letterSpacing:1.5,textTransform:"uppercase",marginBottom:5}}>JD 与预设匹配度排名</div>
+          <div style={{display:"flex",flexDirection:"column",gap:3}}>
+            {localScores.slice(0,5).map((s,i)=>(
+              <div key={s.name} onClick={()=>loadPreset(s.name)}
+                style={{display:"flex",alignItems:"center",gap:8,padding:"5px 8px",background:i===0?"#eff6ff":"#fafafa",border:`1px solid ${i===0?"#bfdbfe":T.border}`,borderRadius:7,cursor:"pointer"}}>
+                <span style={{fontSize:10,fontWeight:700,color:T.text3,width:14}}>{i+1}</span>
+                <span style={{fontSize:11.5,fontWeight:i===0?700:400,color:i===0?T.accent:T.text,flex:1}}>{s.name}</span>
+                <div style={{width:80,height:5,background:"#e5e7eb",borderRadius:3,overflow:"hidden"}}>
+                  <div style={{height:"100%",background:s.score>=60?"#16a34a":s.score>=40?"#d97706":"#9ca3af",width:`${s.score}%`,borderRadius:3}}/>
+                </div>
+                <span style={{fontSize:10.5,fontWeight:700,color:s.score>=60?"#16a34a":s.score>=40?"#d97706":"#9ca3af",width:30,textAlign:"right"}}>{s.score}%</span>
               </div>
-              <span style={{fontSize:10.5,fontWeight:700,color:s.score>=60?"#16a34a":s.score>=40?"#d97706":"#9ca3af",width:28,textAlign:"right"}}>{s.score}%</span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>}
 
-        {/* Status */}
-        {err&&<div style={{background:"#fef2f2",border:"1px solid #fca5a5",borderRadius:7,padding:"6px 10px",fontSize:11,color:"#dc2626"}}>{err}</div>}
-        {notes&&!loading&&<div style={{background:T.accentBg,border:"1px solid #bfdbfe",borderRadius:7,padding:"7px 10px"}}>
-          <div style={{fontSize:8,fontWeight:700,color:T.accent,letterSpacing:1.5,textTransform:"uppercase",marginBottom:2}}>说明</div>
-          <div style={{fontSize:10.5,color:"#1e40af",lineHeight:1.5}}>{notes}</div>
+        {/* Status messages */}
+        {err&&<div style={{background:"#fef2f2",border:"1px solid #fca5a5",borderRadius:7,padding:"6px 10px",fontSize:11,color:"#dc2626",marginBottom:6}}>{err}</div>}
+        {notes&&!loading&&<div style={{background:T.accentBg,border:"1px solid #bfdbfe",borderRadius:7,padding:"7px 10px",marginBottom:6}}>
+          <div style={{fontSize:8.5,fontWeight:700,color:T.accent,letterSpacing:1.5,textTransform:"uppercase",marginBottom:2}}>说明</div>
+          <div style={{fontSize:11,color:"#1e40af",lineHeight:1.5}}>{notes}</div>
         </div>}
-        {cfg&&!loading&&page&&<div style={{background:page.ok?"#f0fdf4":"#fffbeb",border:`1px solid ${page.ok?"#bbf7d0":"#fde68a"}`,borderRadius:7,padding:"6px 10px"}}>
-          <span style={{fontSize:11,fontWeight:700,color:page.ok?"#166534":"#92400e"}}>{page.ok?"✅ 预计1页":`⚠️ 超出约${page.overflow}行`}</span>
-          {!page.ok&&<span style={{fontSize:10,color:"#92400e",marginLeft:7}}>建议精简NEC/隐藏Tianjin</span>}
+        {cfg&&!loading&&page&&<div style={{background:page.ok?"#f0fdf4":"#fffbeb",border:`1px solid ${page.ok?"#bbf7d0":"#fde68a"}`,borderRadius:7,padding:"6px 10px",marginBottom:6}}>
+          <span style={{fontSize:11.5,fontWeight:700,color:page.ok?"#166534":"#92400e"}}>{page.ok?"✅ 预计1页":`⚠️ 超出约${page.overflow}行`}</span>
+          {!page.ok&&<span style={{fontSize:10,color:"#92400e",marginLeft:8}}>建议精简NEC/隐藏Tianjin描述</span>}
         </div>}
+
+        {/* Manual edit toggle */}
+        <button onClick={()=>setManualOpen(o=>!o)} style={{width:"100%",background:manualOpen?"#f5f3ff":"#fafafa",border:`1px solid ${manualOpen?"#ddd6fe":T.border}`,borderRadius:8,padding:"6px 12px",display:"flex",alignItems:"center",justifyContent:"space-between",cursor:"pointer",fontFamily:"inherit",marginBottom:manualOpen?0:0}}>
+          <span style={{fontSize:11,fontWeight:700,color:manualOpen?"#6d28d9":T.text2}}>🎛 手动调整 Bullets</span>
+          <span style={{fontSize:10,color:T.text3}}>{Object.keys(bulletOverrides).length>0?`✏️ ${Object.keys(bulletOverrides).length}条已改 · `:""}{manualOpen?"▲":"▼"}</span>
+        </button>
+        {manualOpen&&<div style={{border:"1px solid #ddd6fe",borderRadius:"0 0 8px 8px",padding:"10px 12px",background:"#faf5ff",maxHeight:280,overflowY:"auto"}}><ManualPanel/></div>}
+      </div>
+
+      {/* ─ Analysis sections (scrollable) ─ */}
+      <div style={{flex:1,overflowY:"auto"}}>
+        {!cfg&&<div style={{display:"flex",alignItems:"center",justifyContent:"center",height:120,color:T.text3,fontSize:12}}>请先选择预设方向或分析JD</div>}
+        {cfg&&<>
+          <RSection id="match" title="🎯 关键词匹配" badge={matchData?`${matchData.score}%`:undefined}>
+            {matchData
+              ?<MatchTab cfg={cfg} jdKeywords={jdKws} matched={matchData.matched} missing={matchData.missing} score={matchData.score} onApply={applyRewrite}/>
+              :<div style={{padding:"12px 16px",fontSize:12,color:T.text3}}>暂无关键词数据</div>}
+          </RSection>
+          <RSection id="report" title="📋 对比报告"><DiffReportTab cfg={cfg}/></RSection>
+          <RSection id="interview" title="💬 面试准备"><InterviewTab cfg={cfg}/></RSection>
+          <RSection id="indkw" title="📚 行业关键词"><IndustryKwTab cfg={cfg}/></RSection>
+        </>}
       </div>
     </div>
 
-    {/* ── MIDDLE (flex ~400px) — Resume preview ── */}
-    <div style={{flex:"0 0 400px",borderRight:`1px solid ${T.border}`,display:"flex",flexDirection:"column",overflow:"hidden"}}>
-      {/* Toolbar */}
-      <div style={{display:"flex",alignItems:"center",gap:5,padding:"6px 10px",borderBottom:`1px solid ${T.border}`,background:"#fafafa",flexShrink:0,flexWrap:"wrap"}}>
-        <span style={{fontSize:10.5,fontWeight:700,color:T.text3}}>📄 预览</span>
+    {/* ── RIGHT COLUMN — Resume preview (flex) ── */}
+    <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",minWidth:0}}>
+      {/* Preview toolbar */}
+      <div style={{display:"flex",alignItems:"center",gap:6,padding:"7px 12px",borderBottom:`1px solid ${T.border}`,background:"#fafafa",flexShrink:0,flexWrap:"wrap"}}>
+        <span style={{fontSize:11,fontWeight:700,color:T.text3}}>📄 简历预览</span>
         {cfg&&<>
-          <button onClick={()=>setShowKwHl(h=>!h)} style={{background:showKwHl?"#fefce8":"none",border:`1px solid ${showKwHl?"#fde047":T.border}`,borderRadius:5,padding:"3px 8px",color:showKwHl?"#713f12":T.text3,fontSize:10.5,cursor:"pointer",fontFamily:"inherit",fontWeight:showKwHl?700:400}}>🔍 高亮 {showKwHl?"ON":"OFF"}</button>
-          {Object.keys(bulletOverrides).length>0&&<span style={{fontSize:10,color:"#7c3aed",background:"#f5f3ff",border:"1px solid #ddd6fe",borderRadius:4,padding:"2px 6px"}}>✏️{Object.keys(bulletOverrides).length}</span>}
-          <button onClick={download} style={{marginLeft:"auto",background:T.accentBg,border:"1px solid #bfdbfe",borderRadius:5,padding:"3px 9px",color:T.accent,fontSize:10.5,cursor:"pointer",fontFamily:"inherit",fontWeight:600}}>⬇ 下载</button>
+          <button onClick={()=>setShowKwHl(h=>!h)} style={{background:showKwHl?"#fefce8":"none",border:`1px solid ${showKwHl?"#fde047":T.border}`,borderRadius:5,padding:"3px 9px",color:showKwHl?"#713f12":T.text3,fontSize:11,cursor:"pointer",fontFamily:"inherit",fontWeight:showKwHl?700:400}}>🔍 关键词高亮 {showKwHl?"ON":"OFF"}</button>
+          {Object.keys(bulletOverrides).length>0&&<span style={{fontSize:10,color:"#7c3aed",background:"#f5f3ff",border:"1px solid #ddd6fe",borderRadius:4,padding:"2px 7px"}}>✏️ {Object.keys(bulletOverrides).length}条已编辑</span>}
+          <button onClick={download} style={{marginLeft:"auto",background:T.accentBg,border:"1px solid #bfdbfe",borderRadius:6,padding:"4px 12px",color:T.accent,fontSize:11,cursor:"pointer",fontFamily:"inherit",fontWeight:600}}>⬇ 下载/打印</button>
         </>}
       </div>
       {/* Keyword bar */}
-      {cfg&&showKwHl&&jdKws.length>0&&<div style={{padding:"5px 10px",borderBottom:`1px solid ${T.border}`,background:T.surface,flexShrink:0}}>
+      {cfg&&showKwHl&&jdKws.length>0&&<div style={{padding:"6px 12px",borderBottom:`1px solid ${T.border}`,background:T.surface}}>
         <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
-          {jdKws.map(kw=>{const ok=matchData?.matched.includes(kw);return <span key={kw} style={{background:ok?"#f0fdf4":"#fef2f2",border:`1px solid ${ok?"#bbf7d0":"#fca5a5"}`,borderRadius:20,padding:"1px 7px",fontSize:9,color:ok?"#166534":"#dc2626"}}>{ok?"✓":"✗"} {kw}</span>;})}
+          {jdKws.map(kw=>{const ok=matchData?.matched.includes(kw);return <span key={kw} style={{background:ok?"#f0fdf4":"#fef2f2",border:`1px solid ${ok?"#bbf7d0":"#fca5a5"}`,borderRadius:20,padding:"1px 7px",fontSize:9.5,color:ok?"#166534":"#dc2626"}}>{ok?"✓":"✗"} {kw}</span>;})}
         </div>
       </div>}
-      <div style={{flex:1,overflowY:"auto",padding:"12px",background:"#f8f9fc",display:"flex",justifyContent:"center"}}>
-        {loading&&<div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",height:"80%",gap:10}}>
-          <div style={{width:32,height:32,border:`3px solid ${T.border}`,borderTop:`3px solid ${T.accent}`,borderRadius:"50%",animation:"spin .8s linear infinite"}}/>
-          <div style={{fontSize:11.5,color:T.text3}}>{elapsed<=10?"AI分析JD中…":elapsed<=30?"选择bullets…":"生成Objective…"}</div>
+      <div style={{flex:1,overflowY:"auto",padding:"16px",background:"#f8f9fc",display:"flex",justifyContent:"center"}}>
+        {loading&&<div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",height:"80%",gap:12}}>
+          <div style={{width:36,height:36,border:`3px solid ${T.border}`,borderTop:`3px solid ${T.accent}`,borderRadius:"50%",animation:"spin .8s linear infinite"}}/>
+          <div style={{fontSize:12,color:T.text3}}>{elapsed<=10?"AI分析JD中…":elapsed<=30?"选择bullets…":"生成Objective…"}</div>
           <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
         </div>}
-        {!loading&&!cfg&&<div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",height:"80%",gap:8}}>
-          <div style={{fontSize:40,opacity:.15}}>📄</div>
-          <div style={{fontSize:12,color:T.text3,textAlign:"center"}}>选择预设方向或粘贴JD生成</div>
+        {!loading&&!cfg&&<div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",height:"80%",gap:10}}>
+          <div style={{fontSize:48,opacity:.15}}>📄</div>
+          <div style={{fontSize:13,color:T.text3,textAlign:"center",lineHeight:1.6}}>
+            选择预设方向<br/>或粘贴JD → 点击分析<br/>
+            <span style={{fontSize:11,color:"#16a34a"}}>⚡ A选项：即时，无需等待</span>
+          </div>
         </div>}
-        {!loading&&cfg&&<div style={{width:"100%",maxWidth:730}}>
+        {!loading&&cfg&&<div style={{width:"100%",maxWidth:740}}>
           <div style={{boxShadow:"0 4px 24px rgba(0,0,0,.12)",borderRadius:3}}>
             <ResumeDoc cfg={cfg} kws={activeKws} showDiff={false} overrides={bulletOverrides}/>
           </div>
         </div>}
       </div>
     </div>
-
-    {/* ── RIGHT (flex) — Analysis sections stacked ── */}
-    <div style={{flex:1,overflowY:"auto",minWidth:0}}>
-      {!cfg&&<EmptyState msg="请先选择预设方向或分析JD"/>}
-      {cfg&&<>
-        <RSection id="match" title="🎯 关键词匹配" badge={matchData?`${matchData.score}%`:undefined}>
-          {matchData?<MatchTab cfg={cfg} jdKeywords={jdKws} matched={matchData.matched} missing={matchData.missing} score={matchData.score} onApply={applyRewrite}/>
-          :<div style={{padding:"12px 16px",fontSize:12,color:T.text3}}>暂无关键词数据（预设已内置关键词，AI生成后显示JD提取结果）</div>}
-        </RSection>
-        <RSection id="report" title="📋 对比报告"><DiffReportTab cfg={cfg}/></RSection>
-        <RSection id="interview" title="💬 面试准备"><InterviewTab cfg={cfg}/></RSection>
-        <RSection id="indkw" title="📚 行业关键词"><IndustryKwTab cfg={cfg}/></RSection>
-      </>}
-    </div>
   </div>;
 }
-
 
 function EmptyState({msg}){
   return <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",height:"60%",gap:8,padding:20}}>
@@ -1602,200 +1585,56 @@ function EmptyState({msg}){
   </div>;
 }
 
-
-// ═══════════════════════════════════════════════════════════════
-// CAREER PROFILE TAB — 职业规划档案（来自"大脑超载"对话分析）
-// ═══════════════════════════════════════════════════════════════
-function CareerProfileTab(){
-  const [section,setSection]=useState("cognitive");
-  const TABS=[
-    {id:"cognitive", label:"🧠 认知配置"},
-    {id:"directions",label:"🎯 方向评估"},
-    {id:"coaching",  label:"📋 Coaching计划"},
-  ];
-  function Block({title,color,children}){return <div style={{background:T.surface,border:`1px solid ${T.border}`,borderLeft:`4px solid ${color}`,borderRadius:10,padding:"14px 18px",marginBottom:12,boxShadow:"0 1px 4px rgba(0,0,0,.04)"}}><div style={{fontSize:13,fontWeight:700,color,marginBottom:10}}>{title}</div>{children}</div>;}
-  function Row({label,value,note}){return <div style={{display:"flex",gap:10,marginBottom:7,alignItems:"flex-start"}}><span style={{fontSize:11,color:T.text3,fontWeight:600,width:100,flexShrink:0,paddingTop:1}}>{label}</span><div style={{flex:1}}><span style={{fontSize:13,color:T.text}}>{value}</span>{note&&<div style={{fontSize:10.5,color:T.text3,marginTop:2}}>{note}</div>}</div></div>;}
-  function Tag({text,color,bg}){return <span style={{background:bg,color,border:`1px solid ${color}33`,borderRadius:20,padding:"3px 11px",fontSize:11.5,fontWeight:600,marginRight:6,marginBottom:4,display:"inline-block"}}>{text}</span>;}
-
-  const MATRIX=[
-    {dir:"FP&A / Corporate Finance",  fit:5, sponsorship:4, growth:5, label:"★ 首选",   color:"#16a34a", note:"与审计背景直接延伸；CPA+CFA组合稀缺；三语在日企FP&A无可替代"},
-    {dir:"Investment Analysis",        fit:4, sponsorship:3, growth:4, label:"★ 首选",   color:"#16a34a", note:"dc1/dc2 Duke Capital经验直接支撑；$2M deployed capital是强力背书"},
-    {dir:"Risk Analysis / Audit",      fit:5, sponsorship:4, growth:3, label:"强相关",   color:"#2563eb", note:"Deloitte背景天然fit；dsa4 $3.6M fraud detection是标志性案例"},
-    {dir:"Financial Data Engineering", fit:3, sponsorship:4, growth:5, label:"桥梁路径", color:"#7c3aed", note:"Python+SQL提升后可进入；STEM OPT延期友好；不依赖社交技能"},
-    {dir:"Management Consulting",      fit:3, sponsorship:2, growth:4, label:"延伸目标", color:"#d97706", note:"Case面试要求高实时反应；需专项准备；MBB几乎无希望但中小所可行"},
-    {dir:"Investment Banking (IBD)",   fit:2, sponsorship:1, growth:3, label:"难度大",   color:"#9ca3af", note:"ATS过滤极严；需校友网络；时间窗口有限"},
-    {dir:"Tech Company Finance",       fit:4, sponsorship:4, growth:4, label:"强相关",   color:"#2563eb", note:"enterprise skills match；SAP/ERP经验在SaaS公司稀缺"},
-    {dir:"PE / VC",                    fit:3, sponsorship:2, growth:4, label:"可尝试",   color:"#7c3aed", note:"Duke Capital经历是入场券；数量少竞争激烈"},
-    {dir:"BizOps / Strategy",          fit:4, sponsorship:4, growth:4, label:"可尝试",   color:"#7c3aed", note:"Lean Six Sigma + BPR直接支撑；适合不想做纯finance的路径"},
-    {dir:"ESG / Sustainability",       fit:3, sponsorship:3, growth:5, label:"可尝试",   color:"#059669", note:"ESG variants已准备；HSM concentration加分；未来增长赛道"},
-  ];
-
-  function ScoreDots({n}){return <div style={{display:"flex",gap:2}}>{[1,2,3,4,5].map(i=><div key={i} style={{width:8,height:8,borderRadius:"50%",background:i<=n?"#2563eb":"#e5e7eb"}}/>)}</div>;}
-
-  return <div style={{maxWidth:920}}>
-    {/* Profile header */}
-    <div style={{background:"linear-gradient(135deg,#1e40af,#7c3aed)",borderRadius:12,padding:"20px 24px",marginBottom:20,color:"#fff"}}>
-      <div style={{fontSize:18,fontWeight:800,marginBottom:4}}>Xi (Shawn) Yang — 职业规划档案</div>
-      <div style={{fontSize:12,opacity:.85,lineHeight:1.7}}>
-        基于认知配置分析 + 经历矩阵评估 · 面向职业顾问（可直接传阅）<br/>
-        CPA (WA) · CFA III · Duke MBA · Deloitte 7yr · NEC 3yr · EN/ZH/JA · STEM OPT
-      </div>
-    </div>
-
-    {/* Sub-tabs */}
-    <div style={{display:"flex",gap:0,borderBottom:`1px solid ${T.border}`,marginBottom:20}}>
-      {TABS.map(t=><button key={t.id} onClick={()=>setSection(t.id)} style={{background:"none",border:"none",borderBottom:`3px solid ${section===t.id?T.accent:"transparent"}`,padding:"8px 18px",color:section===t.id?T.accent:T.text3,fontSize:13,fontWeight:section===t.id?700:400,cursor:"pointer",fontFamily:"inherit"}}>{t.label}</button>)}
-    </div>
-
-    {/* ─ COGNITIVE SECTION ─ */}
-    {section==="cognitive"&&<div>
-      <Block title="🖥 认知硬件配置（Computer Architecture Analogy）" color="#2563eb">
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:14}}>
-          {[
-            {hw:"CPU / 执行力", rating:4, note:"单线程处理能力强；高并发（社交场合）时会降频"},
-            {hw:"Cache / 工作记忆", rating:2, note:"⚠️ 容量偏小、刷新偏慢；即时反应慢的核心原因", alert:true},
-            {hw:"RAM / 短期记忆", rating:4, note:"稳定；任务内可以保持大量上下文"},
-            {hw:"HDD / 长期记忆", rating:5, note:"✅ 容量大；知识积累深；考试类表现强"},
-          ].map(({hw,rating,note,alert})=><div key={hw} style={{background:alert?"#fff7ed":"#f8faff",border:`1px solid ${alert?"#fed7aa":T.border}`,borderRadius:8,padding:"10px 14px"}}>
-            <div style={{fontSize:12,fontWeight:700,color:alert?"#92400e":T.text,marginBottom:4}}>{hw}</div>
-            <ScoreDots n={rating}/>
-            <div style={{fontSize:11,color:T.text3,marginTop:5,lineHeight:1.5}}>{note}</div>
-          </div>)}
-        </div>
-        <div style={{background:"#f0f0ff",border:"1px solid #c7d2fe",borderRadius:8,padding:"10px 14px",fontSize:12,color:"#3730a3",lineHeight:1.7}}>
-          <strong>核心配置结论：</strong> 大容量硬盘 + 稳定RAM + Cache偏小 → <strong>单线程强，多线程一般</strong><br/>
-          深度分析、书面表达、独立工作 = 优势场景 · 即兴社交、多任务并发 = 挑战场景
-        </div>
-      </Block>
-      <Block title="📡 沟通特征观察" color="#7c3aed">
-        <Row label="优势模式" value="书面 > 口头 · 有准备 > 即兴" note="书面表达质量明显高于口头；prepared context下表现优秀"/>
-        <Row label="挑战模式" value="大型networking · 无结构闲聊 · 实时多任务" note="Cache同时处理：听+判断情绪+组织语言 = 容易卡顿"/>
-        <Row label="语言习惯" value="倾向使用模糊表达（I guess / 也许 / 我觉得可能）" note="⚠️ 在决策性节点会降低说服力；可通过脚本化训练改善"/>
-        <Row label="结构化后" value="表达质量显著提升" note="使用STAR框架 + 提前准备关键句 = 绕过Cache瓶颈的有效路径"/>
-        <div style={{background:"#fef3c7",border:"1px solid #fde68a",borderRadius:8,padding:"10px 14px",fontSize:12,color:"#92400e",marginTop:10}}>
-          <strong>致Consultant：</strong> 工作记忆容量偏小是真实的神经认知特征，非动力问题。能降低实时认知负荷的Coaching策略（脚本化回答、书面优先触达、结构化格式）比泛化社交技能训练更有效。候选人分析深度是真实优势；目标是创造让优势可见的场景。
-        </div>
-      </Block>
-    </div>}
-
-    {/* ─ DIRECTIONS SECTION ─ */}
-    {section==="directions"&&<div>
-      <div style={{background:"#f8faff",border:`1px solid ${T.border}`,borderRadius:8,padding:"8px 14px",fontSize:11.5,color:T.text3,marginBottom:14}}>
-        评估维度：<strong>Profile Fit</strong>（经历/资质匹配度）· <strong>Sponsorship友好度</strong>（H-1B支持程度）· <strong>成长潜力</strong>
-      </div>
-      <div style={{overflowX:"auto"}}>
-        <table style={{width:"100%",borderCollapse:"collapse",fontSize:12}}>
-          <thead><tr style={{background:"#f3f4f6",borderBottom:`2px solid ${T.border}`}}>
-            <th style={{padding:"8px 12px",textAlign:"left",fontWeight:700,color:T.text3,fontSize:10.5,letterSpacing:.5,textTransform:"uppercase"}}>方向</th>
-            <th style={{padding:"8px 12px",textAlign:"center",fontWeight:700,color:T.text3,fontSize:10.5,letterSpacing:.5,textTransform:"uppercase",width:90}}>Profile Fit</th>
-            <th style={{padding:"8px 12px",textAlign:"center",fontWeight:700,color:T.text3,fontSize:10.5,letterSpacing:.5,textTransform:"uppercase",width:90}}>Sponsorship</th>
-            <th style={{padding:"8px 12px",textAlign:"center",fontWeight:700,color:T.text3,fontSize:10.5,letterSpacing:.5,textTransform:"uppercase",width:90}}>成长潜力</th>
-            <th style={{padding:"8px 12px",textAlign:"left",fontWeight:700,color:T.text3,fontSize:10.5,letterSpacing:.5,textTransform:"uppercase"}}>判断 & 备注</th>
-          </tr></thead>
-          <tbody>{MATRIX.map((r,i)=><tr key={i} style={{borderBottom:`1px solid ${T.border}`,background:i%2===0?"#fff":"#fafafa"}}>
-            <td style={{padding:"9px 12px",fontWeight:600,color:T.text}}>{r.dir}</td>
-            <td style={{padding:"9px 12px",textAlign:"center"}}><ScoreDots n={r.fit}/></td>
-            <td style={{padding:"9px 12px",textAlign:"center"}}><ScoreDots n={r.sponsorship}/></td>
-            <td style={{padding:"9px 12px",textAlign:"center"}}><ScoreDots n={r.growth}/></td>
-            <td style={{padding:"9px 12px"}}>
-              <span style={{background:r.color+"15",color:r.color,border:`1px solid ${r.color}44`,borderRadius:20,padding:"2px 9px",fontSize:10.5,fontWeight:700,marginRight:8,whiteSpace:"nowrap"}}>{r.label}</span>
-              <span style={{fontSize:11,color:T.text3,lineHeight:1.5}}>{r.note}</span>
-            </td>
-          </tr>)}</tbody>
-        </table>
-      </div>
-      <div style={{marginTop:14,display:"flex",gap:12,flexWrap:"wrap"}}>
-        {[
-          {label:"★ 首选（现在优先投）",    color:"#16a34a", bg:"#f0fdf4"},
-          {label:"强相关（同步投递）",        color:"#2563eb", bg:"#eff6ff"},
-          {label:"桥梁路径（技能提升后）",    color:"#7c3aed", bg:"#f5f3ff"},
-          {label:"延伸目标（时间允许再投）",  color:"#d97706", bg:"#fffbeb"},
-          {label:"难度大（不建议主力资源）",  color:"#9ca3af", bg:"#f9fafb"},
-        ].map(({label,color,bg})=><div key={label} style={{background:bg,border:`1px solid ${color}44`,borderRadius:8,padding:"6px 12px",fontSize:11.5,color,fontWeight:600}}>{label}</div>)}
-      </div>
-    </div>}
-
-    {/* ─ COACHING SECTION ─ */}
-    {section==="coaching"&&<div>
-      <Block title="📋 Coaching 行动计划（5项）" color="#059669">
-        {[
-          {n:"1",title:"沟通结构化 — 脚本化高频场景",priority:"立即",effort:"低",
-           desc:"针对最常见的5个对话节点（自我介绍、Why this role、最大挑战、优势、closing question）预写固定脚本，背熟到自动化程度。目标：让Cache不需要实时生成，只需检索。"},
-          {n:"2",title:"语言优化 — 消除模糊表达",priority:"立即",effort:"低",
-           desc:'用直接陈述替换"I guess""也许""我觉得可能"等模糊表达。每次面试前录音自检，标出模糊词。这是短期内影响面试官感知最大的单一变量。'},
-          {n:"3",title:"书面优先 — 最大化异步沟通比例",priority:"立即",effort:"低",
-           desc:"LinkedIn outreach、邮件followup、感谢信 = 候选人最强的展示窗口。同等effort下，书面沟通的质量远高于口头；应优先建立书面连接再转向电话/面试。"},
-          {n:"4",title:"Python深度提升 — Financial Data Engineering方向备选",priority:"3个月",effort:"中",
-           desc:"现有Python水平可用但尚不具备差异化。在金融数据处理方向（pandas、数据pipeline、自动化报告）的针对性提升，将显著强化Financial Data Engineer作为备选赛道的竞争力。OPT期间可同步完成。"},
-          {n:"5",title:"案例面试准备 — 咨询方向专项",priority:"视面试进展",effort:"高",
-           desc:"如果Consulting赛道出现实质进展，需要专项case prep（非MBB标准，中小所/咨询部门的案例相对灵活）。在没有实质面试邀请前，case prep的边际ROI较低，不建议主力资源投入。"},
-        ].map(item=><div key={item.n} style={{background:"#f8faff",border:`1px solid ${T.border}`,borderRadius:8,padding:"12px 16px",marginBottom:10}}>
-          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:6}}>
-            <span style={{background:T.accent,color:"#fff",borderRadius:"50%",width:22,height:22,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,flexShrink:0}}>{item.n}</span>
-            <span style={{fontSize:13,fontWeight:700,color:T.text,flex:1}}>{item.title}</span>
-            <span style={{background:item.priority==="立即"?"#fef2f2":"#fffbeb",color:item.priority==="立即"?"#dc2626":"#92400e",border:`1px solid ${item.priority==="立即"?"#fca5a5":"#fde68a"}`,borderRadius:20,padding:"2px 9px",fontSize:10.5,fontWeight:600,flexShrink:0}}>{item.priority}</span>
-            <span style={{background:"#f3f4f6",color:T.text3,borderRadius:20,padding:"2px 9px",fontSize:10.5,flexShrink:0}}>effort: {item.effort}</span>
-          </div>
-          <div style={{fontSize:12,color:T.text2,lineHeight:1.65,paddingLeft:32}}>{item.desc}</div>
-        </div>)}
-      </Block>
-      <Block title="🔑 三语优势 — 未被充分利用的差异化" color="#7c3aed">
-        <div style={{fontSize:12,color:T.text2,lineHeight:1.75}}>
-          <strong>现状：</strong>简历在广投时未突出三语（中/日/英）优势，ATS无法识别，相当于免费放弃了一个强力过滤器。<br/>
-          <strong>行动：</strong>针对有日企背景的雇主（FUJIFILM、日立、三菱、NEC美国、大型四大日本业务组）优先匹配；LinkedIn标注 "Fluent in Japanese & Chinese"; 主动在outreach中提及语言能力（特别是日语）。<br/>
-          <strong>预期效果：</strong>在这个细分市场里，具备日语+CPA+审计经验的MBA几乎没有竞争对手。
-        </div>
-      </Block>
-      <div style={{background:"#f8faff",border:`1px solid ${T.border}`,borderRadius:10,padding:"14px 18px",fontSize:11.5,color:T.text2,lineHeight:1.7}}>
-        <div style={{fontWeight:700,color:T.text,marginBottom:6}}>📌 致Consultant的总体建议</div>
-        候选人的profile在数量上是充足的（CPA+CFA+MBA+10yr国际经验），真正的障碍是：<br/>
-        ① Sponsorship在ATS层面的过滤（结构性问题，需要针对sponsorship-friendly雇主的定向策略）<br/>
-        ② 广投策略未充分利用日语/亚太背景这一稀缺竞争优势<br/>
-        ③ 实时沟通中的Cache瓶颈（可通过脚本化coaching有效改善）<br/><br/>
-        推荐优先级：<strong>FP&A/Corporate Finance（首选）→ Investment Analysis（并行）→ Risk Analysis（并行）→ Financial Data Engineering（技能提升后）→ Consulting（机会性）</strong>
-      </div>
-    </div>}
-  </div>;
-}
-
-
 // ═══════════════════════════════════════════════════════════════
 // §22  MAIN APP
 // ═══════════════════════════════════════════════════════════════════════
 const MAIN_TABS = [
-  {id:"tailor",   label:"✨ 简历Tailor"},
-  {id:"library",  label:"📚 简历母版库"},
-  {id:"analysis", label:"📊 技能分析"},
-  {id:"profile",  label:"👤 职业分析档案"},
+  {id:"library",  label:"📚 母版库"},
+  {id:"analysis", label:"📊 分析"},
+  {id:"tailor",   label:"✨ Tailor"},
 ];
 
 
-// ── API Key input (Vite/Vercel: key stored in sessionStorage only) ──
+// ── API Key input (Vite/Vercel deployment — key stored in sessionStorage only) ──
 function ApiKeyInput(){
-  const [key,setKey]=React.useState(()=>typeof sessionStorage!=="undefined"?(sessionStorage.getItem("anthropic_api_key")||""):"");
-  const [show,setShow]=React.useState(false);
-  const [saved,setSaved]=React.useState(false);
-  function save(){if(typeof sessionStorage!=="undefined")sessionStorage.setItem("anthropic_api_key",key);setSaved(true);setTimeout(()=>setSaved(false),2000);setShow(false);}
-  const hasKey=key.startsWith("sk-ant");
-  return <div style={{position:"relative"}}>
-    <button onClick={()=>setShow(s=>!s)} style={{background:hasKey?"#f0fdf4":"#fffbeb",border:`1px solid ${hasKey?"#bbf7d0":"#fde68a"}`,borderRadius:6,padding:"3px 9px",fontSize:10.5,cursor:"pointer",fontFamily:"inherit",color:hasKey?"#166534":"#92400e",fontWeight:600}}>
-      {hasKey?"✓ API Key已设置":"⚙ 设置API Key"}
-    </button>
-    {show&&<div style={{position:"absolute",right:0,top:"110%",background:"#fff",border:"1px solid #e3e5ef",borderRadius:10,padding:"14px 16px",width:300,boxShadow:"0 8px 32px rgba(0,0,0,.12)",zIndex:999}}>
-      <div style={{fontSize:12,fontWeight:700,color:"#111",marginBottom:6}}>Anthropic API Key</div>
-      <div style={{fontSize:11,color:"#6b7280",marginBottom:10,lineHeight:1.5}}>
-        用于「✨ AI精调」功能。Key仅存浏览器sessionStorage，关闭页面自动清除。<br/>
-        <a href="https://console.anthropic.com" target="_blank" rel="noreferrer" style={{color:"#2563eb"}}>获取API Key →</a>
-      </div>
-      <input type="password" value={key} onChange={e=>setKey(e.target.value)} placeholder="sk-ant-api03-..."
-        style={{width:"100%",padding:"7px 10px",border:"1px solid #e3e5ef",borderRadius:6,fontSize:12,outline:"none",fontFamily:"monospace",marginBottom:8,boxSizing:"border-box"}}/>
-      <div style={{display:"flex",gap:6}}>
-        <button onClick={save} style={{flex:1,background:"#2563eb",border:"none",borderRadius:6,padding:"7px",color:"#fff",fontSize:12,cursor:"pointer",fontWeight:600}}>{saved?"✓ 已保存":"保存"}</button>
-        <button onClick={()=>{setKey("");if(typeof sessionStorage!=="undefined")sessionStorage.removeItem("anthropic_api_key");setShow(false);}} style={{background:"#fef2f2",border:"1px solid #fca5a5",borderRadius:6,padding:"7px 10px",color:"#dc2626",fontSize:12,cursor:"pointer"}}>清除</button>
-      </div>
-      <div style={{fontSize:10,color:"#9ca3af",marginTop:6}}>⚡ 本地分析功能无需API Key</div>
-    </div>}
-  </div>;
+  const [key, setKey] = React.useState(() =>
+    typeof sessionStorage !== "undefined" ? (sessionStorage.getItem("anthropic_api_key") || "") : ""
+  );
+  const [show, setShow] = React.useState(false);
+  const [saved, setSaved] = React.useState(false);
+  function save(){
+    if(typeof sessionStorage !== "undefined") sessionStorage.setItem("anthropic_api_key", key);
+    setSaved(true); setTimeout(()=>setSaved(false), 2000); setShow(false);
+  }
+  const hasKey = key.startsWith("sk-ant");
+  return (
+    <div style={{position:"relative"}}>
+      <button onClick={()=>setShow(s=>!s)} style={{background:hasKey?"#f0fdf4":"#fffbeb",border:`1px solid ${hasKey?"#bbf7d0":"#fde68a"}`,borderRadius:6,padding:"3px 9px",fontSize:10.5,cursor:"pointer",fontFamily:"inherit",color:hasKey?"#166534":"#92400e",fontWeight:600}}>
+        {hasKey ? "✓ API Key 已设置" : "⚙ 设置 API Key"}
+      </button>
+      {show && (
+        <div style={{position:"absolute",right:0,top:"110%",background:"#fff",border:"1px solid #e3e5ef",borderRadius:10,padding:"14px 16px",width:320,boxShadow:"0 8px 32px rgba(0,0,0,.12)",zIndex:999}}>
+          <div style={{fontSize:12,fontWeight:700,color:"#111",marginBottom:6}}>Anthropic API Key</div>
+          <div style={{fontSize:11,color:"#6b7280",marginBottom:10,lineHeight:1.5}}>
+            用于「✨ B. AI精调」功能。Key 仅存在浏览器 sessionStorage，不上传服务器，关闭页面自动清除。<br/>
+            <a href="https://console.anthropic.com" target="_blank" rel="noreferrer" style={{color:"#2563eb"}}>获取 API Key →</a>
+          </div>
+          <input type="password" value={key} onChange={e=>setKey(e.target.value)}
+            placeholder="sk-ant-api03-..."
+            style={{width:"100%",padding:"7px 10px",border:"1px solid #e3e5ef",borderRadius:6,fontSize:12,outline:"none",fontFamily:"monospace",marginBottom:8,boxSizing:"border-box"}}/>
+          <div style={{display:"flex",gap:6}}>
+            <button onClick={save} style={{flex:1,background:"#2563eb",border:"none",borderRadius:6,padding:"7px",color:"#fff",fontSize:12,cursor:"pointer",fontWeight:600}}>
+              {saved ? "✓ 已保存" : "保存"}
+            </button>
+            <button onClick={()=>{setKey("");if(typeof sessionStorage!=="undefined")sessionStorage.removeItem("anthropic_api_key");setShow(false);}} style={{background:"#fef2f2",border:"1px solid #fca5a5",borderRadius:6,padding:"7px 10px",color:"#dc2626",fontSize:12,cursor:"pointer"}}>
+              清除
+            </button>
+          </div>
+          <div style={{fontSize:10,color:"#9ca3af",marginTop:8}}>⚡ 本地分析功能无需 API Key，永远可用</div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default function MasterLibrary(){
@@ -1821,8 +1660,6 @@ export default function MasterLibrary(){
             <span><span style={{color:T.accent,fontWeight:700}}>{ALL_IDS.length}</span> bullets</span>
             <span><span style={{color:"#d97706",fontWeight:700}}>{newCount}</span> NEW</span>
             <ApiKeyInput/>
-            <span><span style={{color:"#be185d",fontWeight:700}}>{COURSE_NAMES.length}</span> 课程</span>
-            <span><span style={{color:"#059669",fontWeight:700}}>{Object.keys(PRESETS).length}</span> 预设</span>
           </div>
         </div>
       </div>
@@ -1831,7 +1668,6 @@ export default function MasterLibrary(){
         {tab==="library"  && <CombinedLibraryTab/>}
         {tab==="analysis" && <CombinedAnalysisTab/>}
         {tab==="tailor"   && <div style={{flex:1,overflow:"hidden",display:"flex",flexDirection:"column"}}><TailorTab/></div>}
-        {tab==="profile"  && <div style={{padding:"20px 24px",flex:1,overflowY:"auto"}}><CareerProfileTab/></div>}
       </div>
     </div>
   );
