@@ -256,22 +256,6 @@ const PRESETS = {
     deloitteAssocBullets:["da2","da1_std"], necBullets:["nec2","nec_training","nec_erp"],
     objective:"CPA, CFA III candidate, and Duke MBA with 10+ years of operations and process improvement across consulting, ERP implementation, and BPR. Delivered $5M in annual savings through workflow redesign and drove 40% system adoption improvement through change management.",
     keywords:["process improvement","operations","workflow","lean","six sigma","BPR","efficiency","change management","ERP","stakeholder","cost savings","headcount","automation","cross-functional","implementation"] },
-  "Investment Analysis": {
-    ...BASELINE_CFG, dukeConcentration:"decision", showCoursework:true, showWasedaDesc:false,
-    coursework:["Corporate Finance","Valuation and Fundamental Analysis","Investment","Global Asset Allocation","Finance Data Analytics","Corporate Restructuring"],
-    deloitteSABullets:["dsa1_std","dsa3","dsa4","dsa2","dsa_cfo"],
-    deloitteAssocBullets:["da1_std","da2"], necBullets:["nec1","nec_sapdash"],
-    skillsVariant:"standard", showHobbies:false, communityVariant:"short",
-    objective:"CFA Level III candidate, Washington State CPA, and Duke MBA with 10+ years of financial analysis and valuation across tech, healthcare, and manufacturing. Proven expertise in investment screening, financial modeling, and data-driven analytical insights to support buy/sell/hold decisions.",
-    keywords:["financial modeling","valuation","DCF","comparable analysis","investment analysis","equity research","financial analysis","P&L","due diligence","capital markets","portfolio","forecasting","KPI","SQL","Power BI","data-driven"] },
-  "Risk Analysis": {
-    ...BASELINE_CFG, dukeConcentration:"decision", showCoursework:true, showWasedaDesc:false,
-    coursework:["Corporate Finance","Valuation and Fundamental Analysis","Data Analytics for Business","Finance Data Analytics","Tax for Global Management","Foundations of Strategy"],
-    deloitteSABullets:["dsa1_std","dsa4","dsa_lean","dsa2","dsa_cfo"],
-    deloitteAssocBullets:["da1_esg2","da2"], necBullets:["nec1","nec_erp"],
-    skillsVariant:"standard", showHobbies:false, communityVariant:"short",
-    objective:"Washington State CPA, CFA III candidate, and Duke MBA with 10+ years of risk identification, internal controls, and audit expertise at Deloitte. Proven ability to detect $3.6M financial fraud, optimize controls frameworks, and deliver risk insights to C-suite stakeholders across multinational environments.",
-    keywords:["risk analysis","risk assessment","internal controls","audit","compliance","fraud detection","risk management","financial risk","operational risk","regulatory","enterprise risk","stress testing","SOX","GAAP","IFRS","financial analysis","governance"] },
 };
 
 // ── Per-preset keyword sets (for instant match analysis without JD) ──
@@ -289,8 +273,6 @@ const PRESET_KEYWORDS = {
   "Startup Strategic Finance": ["unit economics","cash burn","runway","fundraising","financial forecasting","strategic planning","growth","metrics","VC","startup","equity","capital","P&L","financial modeling","data-driven"],
   "Corporate Development": ["M&A","due diligence","valuation","capital structure","financial analysis","acquisition","strategic","deal","integration","modeling","IPO","equity","risk","compliance","investment"],
   "BizOps / Operations":   ["process improvement","operations","efficiency","workflow","cross-functional","KPI","data-driven","project management","stakeholder","automation","cost savings","change management","ERP","analytics","headcount"],
-  "Investment Analysis":   ["financial modeling","valuation","DCF","comparable analysis","investment analysis","equity research","financial analysis","P&L","due diligence","capital markets","portfolio","forecasting","KPI","SQL","Power BI"],
-  "Risk Analysis":         ["risk analysis","risk assessment","internal controls","audit","compliance","fraud detection","risk management","financial risk","operational risk","regulatory","enterprise risk","SOX","GAAP","IFRS","governance"],
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -584,7 +566,7 @@ function ResumeContentTab(){
       <Row label="描述">Awarded first-honor academic-based scholarship (top 5%); Outstanding student leader scholarship</Row>
     </Card>
     <SectionTitle>📜 证书（5张）</SectionTitle>
-    <Card>{[{n:"CFA Exam Level III Candidate",t:"Finance",u:"全部岗位"},{n:"U.S. Certified Public Accountant (Washington State), Licensed January 2022",t:"Finance",u:"全部岗位"},{n:"AWS Certified Solutions Architect – Associate",t:"Tech",u:"Tech/IT/Cloud"},{n:"Oracle Certified Professional, Oracle Master Gold 11g",t:"Tech",u:"ERP/IT Systems"},{n:"Fundamental & Applied IT Engineer (IPA Japan) – Passed",t:"Tech",u:"日企/IT方向"}].map(c=><div key={c.n} style={{display:"flex",alignItems:"center",gap:10,marginBottom:8,paddingBottom:8,borderBottom:`1px solid ${T.border}`}}>
+    <Card>{[{n:"CFA Exam Level III Candidate",t:"Finance",u:"全部岗位"},{n:"U.S. Certified Public Accountant (USCPA), Licensed January 2022",t:"Finance",u:"全部岗位"},{n:"AWS Certified Solutions Architect – Associate",t:"Tech",u:"Tech/IT/Cloud"},{n:"Oracle Certified Professional, Oracle Master Gold 11g",t:"Tech",u:"ERP/IT Systems"},{n:"Fundamental & Applied IT Engineer (IPA Japan) – Passed",t:"Tech",u:"日企/IT方向"}].map(c=><div key={c.n} style={{display:"flex",alignItems:"center",gap:10,marginBottom:8,paddingBottom:8,borderBottom:`1px solid ${T.border}`}}>
       <span style={{fontSize:13,color:T.text,flex:1,fontWeight:500}}>{c.n}</span>
       <Chip label={c.t} bg={c.t==="Finance"?"#eff6ff":"#f5f3ff"} color={c.t==="Finance"?"#1e40af":"#6d28d9"} bd={c.t==="Finance"?"#bfdbfe":"#ddd6fe"}/>
       <span style={{fontSize:11,color:T.text3,width:110,flexShrink:0,textAlign:"right"}}>{c.u}</span>
@@ -811,12 +793,12 @@ function ResumeDoc({cfg,kws,showDiff,overrides}){
     {cfg.objective&&<><RSH title="OBJECTIVE"/><div style={{fontSize:9.7,lineHeight:1.5,color:"#111",paddingBottom:2}}>{hlKws(cfg.objective,kwsArr)}</div></>}
     <RSH title="EDUCATION"/>
     <RRow left="DUKE UNIVERSITY, The Fuqua School of Business" right="Durham, NC"/>
-    <RRow left={`Master of Business Administration${concStr}`} right="Aug 2024 – May 2026" bold={false}/>
+    <RRow left={`Master of Business Administration${concStr}`} right="May 2026" bold={false}/>
     <div style={{fontSize:9.5}}>GPA: 3.85/4; Merit-based scholarship; Dean's list; Finance Club; Tech Club; Consulting Club</div>
     {cfg.showCoursework&&cfg.coursework?.length>0&&<div style={{fontSize:9.5}}>Relevant Coursework: {cfg.coursework.join(", ")}</div>}
-    <RRow left="WASEDA UNIVERSITY" right="Tokyo, Japan" mt={4}/><RRow left="Master of Arts in Economics" right="Apr 2013 – Jun 2015" bold={false}/>
+    <RRow left="WASEDA UNIVERSITY" right="Tokyo, Japan" mt={4}/><RRow left="Master of Arts in Economics" right="Mar 2015" bold={false}/>
     {cfg.showWasedaDesc&&<div style={{fontSize:9.5}}>Applied econometric models to analyze cross-cultural market trends; Active member of Intercultural Communication Center; planned 10+ cross-culture-exchange events, engaging 10+ sponsors</div>}
-    <RRow left="TIANJIN UNIVERSITY OF FINANCE AND ECONOMICS" right="Tianjin, China" mt={4}/><RRow left="Bachelor of Arts in Japanese Language & Accounting" right="Sep 2008 – Jun 2012" bold={false}/>
+    <RRow left="TIANJIN UNIVERSITY OF FINANCE AND ECONOMICS" right="Tianjin, China" mt={4}/><RRow left="Bachelor of Arts in Japanese Language & Accounting" right="Jun 2012" bold={false}/>
     {cfg.showTianjinDesc&&<div style={{fontSize:9.5}}>Awarded first-honor academic-based scholarship (top 5%); Outstanding student leader scholarship</div>}
     <RSH title="EXPERIENCE"/>
     <RRow left="Duke Capital Partners" right="Durham, NC"/><RRow left="Investment Associate" right="2025–Present" bold={false} italic/>
