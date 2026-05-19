@@ -31,8 +31,8 @@ const B = {
   nec_erp:{ isNew:true, text:"Led the implementation and customization of ERP systems (SAP, IFS), translating cross-functional business needs into actionable system specifications supporting financial and inventory operations", roleLabels:["ERP/IT Systems","System Analyst","Operations","Supply Chain","Consulting"], hardSkills:["SAP","IFS","ERP","Requirements Analysis","System Design","Business Analysis"], softSkills:["Cross-functional Collaboration","Communication","Analytical Thinking","Stakeholder Management"], impact:null, strength:{hasQuantity:false,hasActionVerb:true,hasOutcome:true} },
   nec_predictive:{ isNew:true, text:"Coordinated delivery of predictive analytics solutions and automated dashboards across departments, improving stock visibility and reducing operational inefficiencies by 40%", roleLabels:["Data Analytics","Operations","Supply Chain","Business Intelligence","Consulting"], hardSkills:["Predictive Analytics","Dashboard Development","Process Automation","Supply Chain Analytics"], softSkills:["Cross-functional Collaboration","Project Coordination","Communication"], impact:{type:"efficiency",label:"Operational Inefficiency",value:"-40%",icon:"⚡"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
   nec_sapdash:{ isNew:true, text:"Designed and deployed real-time SAP dashboards and reporting tools, improving forecasting accuracy by 35% and supporting data-driven inventory planning and executive decision-making", roleLabels:["ERP/IT Systems","Data Analytics","Operations","Supply Chain"], hardSkills:["SAP","Dashboard Development","Reporting Tools","Forecasting","Data-Driven Decision Making"], softSkills:["Attention to Detail","Problem Solving","Communication"], impact:{type:"efficiency",label:"Forecasting Accuracy",value:"+35%",icon:"📊"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
-  thinkie1:{ text:"Conducted keyword gap analysis across 101 terms and audited 70+ existing articles to redesign content architecture for a Mitsui-backed neurotechnology startup; delivered topic cluster strategy targeting 3 audience segments and a 50-article content roadmap, adopted as the brand's organic search and AI visibility plan", roleLabels:["Digital Marketing","Content Strategy","BizOps / Operations","Strategy","Analytics"], hardSkills:["SEO Strategy","Content Strategy","Keyword Research","Digital Marketing","Market Analysis","Strategic Framework Design"], softSkills:["Analytical Thinking","Strategic Thinking","Project Management"], impact:{type:"delivery",label:"Articles Planned",value:"50",icon:"📄"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
-  thinkie2:{ text:"Built cross-platform AI citation measurement framework spanning 8 generative search platforms (incl. Google AI Overviews, ChatGPT, Perplexity); evaluated 45 SEO/GEO tools and established a structured visibility scoring methodology to enable ongoing performance tracking", roleLabels:["Digital Marketing","Analytics","BizOps / Operations","Strategy"], hardSkills:["Digital Marketing","Analytics","SEO Strategy","Performance Measurement","Competitive Analysis"], softSkills:["Analytical Thinking","Problem Solving","Attention to Detail"], impact:{type:"scale",label:"Platforms Analyzed",value:"8",icon:"🔍"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
+  thinkie1:{ isNew:true, text:"Conducted keyword gap analysis across 101 terms and audited 70+ existing articles to redesign content architecture for a Mitsui-backed neurotechnology startup; delivered topic cluster strategy targeting 3 audience segments and a 50-article content roadmap, adopted as the brand's organic search and AI visibility plan", roleLabels:["Digital Marketing","Content Strategy","BizOps / Operations","Strategy","Analytics"], hardSkills:["SEO Strategy","Content Strategy","Keyword Research","Digital Marketing","Market Analysis","Strategic Framework Design"], softSkills:["Analytical Thinking","Strategic Thinking","Project Management"], impact:{type:"delivery",label:"Articles Planned",value:"50",icon:"📄"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
+  thinkie2:{ isNew:true, text:"Built cross-platform AI citation measurement framework spanning 8 generative search platforms (incl. Google AI Overviews, ChatGPT, Perplexity); evaluated 45 SEO/GEO tools and established a structured visibility scoring methodology to enable ongoing performance tracking", roleLabels:["Digital Marketing","Analytics","BizOps / Operations","Strategy"], hardSkills:["Digital Marketing","Analytics","SEO Strategy","Performance Measurement","Competitive Analysis"], softSkills:["Analytical Thinking","Problem Solving","Attention to Detail"], impact:{type:"scale",label:"Platforms Analyzed",value:"8",icon:"🔍"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
   nec2:{ text:"Analyzed end-to-end business operation processes and redesigned workflow for chemical client, eliminating 80 FTEs and saving $5M annually", roleLabels:["Operations","Consulting","Process Improvement","Manufacturing","Cost Optimization"], hardSkills:["Business Process Reengineering","Workflow Design","Operations Analysis","Cost Reduction","Process Automation"], softSkills:["Analytical Thinking","Problem Solving","Strategic Thinking"], impact:{type:"savings",label:"Annual Cost Savings",value:"$5M",icon:"💾"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
   nec_training:{ isNew:true, text:"Led end-user training and change management sessions following ERP system rollout across three client divisions; increased system adoption by 40% and reduced support tickets by 25% within the first quarter", roleLabels:["Change Management","ERP/IT Systems","Consulting","Operations","Project Management"], hardSkills:["Change Management","ERP Training","Project Management","Adoption Metrics","Program Design"], softSkills:["Leadership","Communication","Training & Development","Stakeholder Management","Empathy"], impact:{type:"efficiency",label:"System Adoption",value:"+40%",icon:"📱"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
 };
@@ -65,6 +65,10 @@ const LIBRARY = [
   { company:"Duke Capital Partners", location:"Durham, NC", color:"#2563eb",
     roles:[{ title:"Investment Associate", dates:"2025–Present",
       groups:[{bullets:["dc1"]},{bullets:["dc2"]}] }] },
+  { company:"Thinkie System", location:"Seattle, WA (Remote)", color:"#0891b2",
+    note:"仅 BizOps / go-to-market / digital strategy 方向收录",
+    roles:[{ title:"Digital Marketing Analyst · Mentored Study", dates:"Sep 2025 – Dec 2025",
+      groups:[{bullets:["thinkie1"]},{bullets:["thinkie2"]}] }] },
   { company:"EQTY LYFE", location:"San Jose, CA (Remote)", color:"#db2777",
     note:"仅 fintech / startup / FP&A / PE 方向收录",
     roles:[{ title:"Finance Intern / MBA Summer Finance Intern", dates:"2025",
@@ -313,6 +317,8 @@ const INDUSTRY_KW = {
 // §8  INTERVIEW QUESTIONS — preset-based (no API needed)
 // ═══════════════════════════════════════════════════════════════
 const IQ_BY_BULLET = {
+  thinkie1: { q:"Tell me about a time you led a content or go-to-market strategy from scratch.", hint:"101 keywords, 70+ article audit, 4-pillar topic cluster, 3 audience segments. Emphasize end-to-end ownership and adoption as roadmap." },
+  thinkie2: { q:"Describe how you have built a measurement or tracking framework for a new initiative.", hint:"8 AI platforms, 45 tools evaluated, 10-point visibility scoring rubric. Focus on methodology design and tool selection rationale." },
   dc1: { q:"Walk me through how you source and evaluate investment opportunities.", hint:"Lead with process: screening → DD → go/no-go → mention $2M deployed result" },
   dc2: { q:"Describe a time you built a reporting or analytics solution from scratch.", hint:"Use Power BI dashboard, -40% reporting ops. Quantify the before/after." },
   eq1: { q:"Tell me about your experience with financial forecasting for an early-stage company.", hint:"Unit economics, cash burn, multi-year model. Explain what assumptions you made." },
@@ -338,7 +344,7 @@ const ALL_ROLES = [...new Set(ALL_IDS.flatMap(id => B[id].roleLabels))].sort();
 const ALL_HARD  = [...new Set(ALL_IDS.flatMap(id => B[id].hardSkills))].sort();
 const ALL_SOFT  = [...new Set(ALL_IDS.flatMap(id => B[id].softSkills))].sort();
 const newCount  = ALL_IDS.filter(id => B[id].isNew).length;
-const CO_COLOR  = { "Duke Capital Partners":"#2563eb","EQTY LYFE":"#db2777","Deloitte Touche Tohmatsu LLC.":"#059669","NEC Solution Innovators, Ltd.":"#7c3aed" };
+const CO_COLOR  = { "Duke Capital Partners":"#2563eb","Thinkie System":"#0891b2","EQTY LYFE":"#db2777","Deloitte Touche Tohmatsu LLC.":"#059669","NEC Solution Innovators, Ltd.":"#7c3aed" };
 
 function getAllBulletIds(cfg) {
   if (!cfg) return [];
@@ -674,12 +680,12 @@ function SkillIndexTab(){
 // ═══════════════════════════════════════════════════════════════
 function DashboardTab({cfg}){
   const [expandedCard,setExpandedCard]=useState(null);
-  const PIE_COLORS=["#2563eb","#db2777","#059669","#7c3aed"];
+  const PIE_COLORS=["#2563eb","#0891b2","#db2777","#059669","#7c3aed"];
   const tt={contentStyle:{background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,fontSize:12}};
   const selIds=cfg?getAllBulletIds(cfg):[];
   const impactBullets=selIds.filter(id=>B[id]?.impact);
 
-  const byCompany=["Duke Capital Partners","EQTY LYFE","Deloitte Touche Tohmatsu LLC.","NEC Solution Innovators, Ltd."].map(c=>{
+  const byCompany=["Duke Capital Partners","Thinkie System","EQTY LYFE","Deloitte Touche Tohmatsu LLC.","NEC Solution Innovators, Ltd."].map(c=>{
     const co=LIBRARY.find(l=>l.company===c);
     const count=co?co.roles.flatMap(r=>r.groups.flatMap(g=>[...(g.bullets||[]),...(g.variants||[]).map(v=>v.id)])).length:0;
     return {name:c.split(" ")[0],count};
@@ -1639,9 +1645,10 @@ function CareerProfileTab(){
   const MATRIX=[
     {dir:"FP&A / Corporate Finance",  fit:5, sponsorship:4, growth:5, label:"★ 首选",   color:"#16a34a", note:"与审计背景直接延伸；CPA+CFA组合稀缺；三语在日企FP&A无可替代"},
     {dir:"Investment Analysis",        fit:4, sponsorship:3, growth:4, label:"★ 首选",   color:"#16a34a", note:"dc1/dc2 Duke Capital经验直接支撑；$2M deployed capital是强力背书"},
+    {dir:"Transaction Advisory",       fit:5, sponsorship:4, growth:4, label:"★ 首选",   color:"#16a34a", note:"A&M/FTI/Kroll核心工作是DD+valuation+forensic；dsa4 $3.6M fraud + da1 $15M DD直接命中；CPA在此赛道比MBA更值钱；sponsorship比MBB友好"},
     {dir:"Risk Analysis / Audit",      fit:5, sponsorship:4, growth:3, label:"强相关",   color:"#2563eb", note:"Deloitte背景天然fit；dsa4 $3.6M fraud detection是标志性案例"},
     {dir:"Financial Data Engineering", fit:3, sponsorship:4, growth:5, label:"桥梁路径", color:"#7c3aed", note:"Python+SQL提升后可进入；STEM OPT延期友好；不依赖社交技能"},
-    {dir:"Management Consulting",      fit:3, sponsorship:2, growth:4, label:"延伸目标", color:"#d97706", note:"Case面试要求高实时反应；需专项准备；MBB几乎无希望但中小所可行"},
+    {dir:"Management Consulting",      fit:3, sponsorship:2, growth:4, label:"延伸目标", color:"#d97706", note:"ZS Associates对口HSM+pharma analytics；Econ Consulting（AG/NERA/CRA）偏litigation/forensic，MA in Econ加分但工作性质偏学术；30个case已打底，有面试邀请再专项准备"},
     {dir:"Investment Banking (IBD)",   fit:2, sponsorship:1, growth:3, label:"难度大",   color:"#9ca3af", note:"ATS过滤极严；需校友网络；时间窗口有限"},
     {dir:"Tech Company Finance",       fit:4, sponsorship:4, growth:4, label:"强相关",   color:"#2563eb", note:"enterprise skills match；SAP/ERP经验在SaaS公司稀缺"},
     {dir:"PE / VC",                    fit:3, sponsorship:2, growth:4, label:"可尝试",   color:"#7c3aed", note:"Duke Capital经历是入场券；数量少竞争激烈"},
@@ -1741,6 +1748,9 @@ function CareerProfileTab(){
             {dir:"FP&A / Corporate Finance ★",color:"#16a34a",bg:"#f0fdf4",
              companies:["Applied Materials","Lenovo","Tanium","Fujifilm Biotechnologies","NEC America","Hitachi America","Mitsubishi UFJ","DTCC","3M","Honeywell","Abbott","Johnson & Johnson","Emerson","Caterpillar","Thermo Fisher"],
              note:"非科技类大型企业 + 日企关联公司；CPA+审计背景在此类FP&A岗最直接匹配"},
+            {dir:"Transaction Advisory ★",color:"#16a34a",bg:"#f0fdf4",
+             companies:["Alvarez & Marsal","FTI Consulting","Kroll","Duff & Phelps","Stout","Ankura","Houlihan Lokey (Advisory)","Lazard (Restructuring)","Moelis","PJT Partners","Lincoln International"],
+             note:"Financial DD / forensic / restructuring；dsa4 fraud + da1 DD直接命中；CPA比MBA更值钱；sponsorship比MBB友好很多"},
             {dir:"Investment Analysis ★",color:"#16a34a",bg:"#f0fdf4",
              companies:["BlackRock","Vanguard","State Street","PIMCO","Fidelity","T. Rowe Price","JPMorgan Asset Mgmt","Goldman Sachs AM","Nuveen","Baird","Raymond James","Morningstar"],
              note:"资产管理优先于投行；CFA III + 审计背景在risk-adjusted分析岗有竞争力"},
@@ -1750,6 +1760,9 @@ function CareerProfileTab(){
             {dir:"Tech Company Finance ★",color:"#16a34a",bg:"#f0fdf4",
              companies:["Amazon","Microsoft","Meta","Intuit","Cisco","Salesforce","ServiceNow","Nvidia","AMD","Qualcomm","Workday","Snowflake","Databricks","Palantir","Stripe","Block (Square)"],
              note:"FAANG + SaaS公司finance/FP&A team；ERP/SAP经验 + analytics skills在此类岗位有差异化"},
+            {dir:"Management / Econ Consulting",color:"#d97706",bg:"#fffbeb",
+             companies:["ZS Associates","Analysis Group","Cornerstone Research","NERA Economic Consulting","CRA International","Putnam Associates","Precision Medicine Group","Navigant (now Guidehouse)"],
+             note:"ZS对口HSM+pharma；Econ Consulting偏litigation，MA in Econ加分；有面试邀请再专项准备case"},
             {dir:"PE / VC",color:"#7c3aed",bg:"#f5f3ff",
              companies:["Duke Capital Partners（现有）","Andreessen Horowitz","General Catalyst","Insight Partners","Vista Equity","Thoma Bravo","Battery Ventures","SoftBank Vision Fund"],
              note:"Duke Capital经历是敲门砖；专注科技/SaaS方向的PE更契合背景"},
@@ -1804,7 +1817,7 @@ function CareerProfileTab(){
         ① Sponsorship在ATS层面的过滤（结构性问题，需要针对sponsorship-friendly雇主的定向策略）<br/>
         ② 广投策略未充分利用日语/亚太背景这一稀缺竞争优势<br/>
         ③ 实时沟通中的Cache瓶颈（可通过脚本化coaching有效改善）<br/><br/>
-        推荐优先级：<strong>FP&A/Corporate Finance（首选）→ Investment Analysis（并行）→ Risk Analysis（并行）→ Financial Data Engineering（技能提升后）→ Consulting（机会性）</strong>
+        推荐优先级：<strong>FP&A/Corporate Finance（首选）→ Transaction Advisory（首选并行）→ Investment Analysis（并行）→ Risk Analysis（并行）→ Financial Data Engineering（技能提升后）→ Consulting（机会性）</strong>
       </div>
     </div>}
   </div>;
