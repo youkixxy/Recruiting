@@ -256,7 +256,6 @@ const PRESETS = {
     deloitteAssocBullets:["da2","da1_std"], necBullets:["nec2","nec_training","nec_erp"],
     objective:"CPA, CFA III candidate, and Duke MBA with 10+ years of operations and process improvement across consulting, ERP implementation, and BPR. Delivered $5M in annual savings through workflow redesign and drove 40% system adoption improvement through change management.",
     keywords:["process improvement","operations","workflow","lean","six sigma","BPR","efficiency","change management","ERP","stakeholder","cost savings","headcount","automation","cross-functional","implementation"] },
-,
   "Investment Analysis": {
     ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
     coursework:["Corporate Finance","Valuation and Fundamental Analysis","Investment","Global Asset Allocation","Finance Data Analytics","Corporate Restructuring"],
