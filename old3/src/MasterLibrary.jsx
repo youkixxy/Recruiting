@@ -31,8 +31,6 @@ const B = {
   nec_erp:{ isNew:true, text:"Led the implementation and customization of ERP systems (SAP, IFS), translating cross-functional business needs into actionable system specifications supporting financial and inventory operations", roleLabels:["ERP/IT Systems","System Analyst","Operations","Supply Chain","Consulting"], hardSkills:["SAP","IFS","ERP","Requirements Analysis","System Design","Business Analysis"], softSkills:["Cross-functional Collaboration","Communication","Analytical Thinking","Stakeholder Management"], impact:null, strength:{hasQuantity:false,hasActionVerb:true,hasOutcome:true} },
   nec_predictive:{ isNew:true, text:"Coordinated delivery of predictive analytics solutions and automated dashboards across departments, improving stock visibility and reducing operational inefficiencies by 40%", roleLabels:["Data Analytics","Operations","Supply Chain","Business Intelligence","Consulting"], hardSkills:["Predictive Analytics","Dashboard Development","Process Automation","Supply Chain Analytics"], softSkills:["Cross-functional Collaboration","Project Coordination","Communication"], impact:{type:"efficiency",label:"Operational Inefficiency",value:"-40%",icon:"⚡"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
   nec_sapdash:{ isNew:true, text:"Designed and deployed real-time SAP dashboards and reporting tools, improving forecasting accuracy by 35% and supporting data-driven inventory planning and executive decision-making", roleLabels:["ERP/IT Systems","Data Analytics","Operations","Supply Chain"], hardSkills:["SAP","Dashboard Development","Reporting Tools","Forecasting","Data-Driven Decision Making"], softSkills:["Attention to Detail","Problem Solving","Communication"], impact:{type:"efficiency",label:"Forecasting Accuracy",value:"+35%",icon:"📊"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
-  thinkie1:{ text:"Conducted keyword gap analysis across 101 terms and audited 70+ existing articles to redesign content architecture for a Mitsui-backed neurotechnology startup; delivered topic cluster strategy targeting 3 audience segments and a 50-article content roadmap, adopted as the brand's organic search and AI visibility plan", roleLabels:["Digital Marketing","Content Strategy","BizOps / Operations","Strategy","Analytics"], hardSkills:["SEO Strategy","Content Strategy","Keyword Research","Digital Marketing","Market Analysis","Strategic Framework Design"], softSkills:["Analytical Thinking","Strategic Thinking","Project Management"], impact:{type:"delivery",label:"Articles Planned",value:"50",icon:"📄"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
-  thinkie2:{ text:"Built cross-platform AI citation measurement framework spanning 8 generative search platforms (incl. Google AI Overviews, ChatGPT, Perplexity); evaluated 45 SEO/GEO tools and established a structured visibility scoring methodology to enable ongoing performance tracking", roleLabels:["Digital Marketing","Analytics","BizOps / Operations","Strategy"], hardSkills:["Digital Marketing","Analytics","SEO Strategy","Performance Measurement","Competitive Analysis"], softSkills:["Analytical Thinking","Problem Solving","Attention to Detail"], impact:{type:"scale",label:"Platforms Analyzed",value:"8",icon:"🔍"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
   nec2:{ text:"Analyzed end-to-end business operation processes and redesigned workflow for chemical client, eliminating 80 FTEs and saving $5M annually", roleLabels:["Operations","Consulting","Process Improvement","Manufacturing","Cost Optimization"], hardSkills:["Business Process Reengineering","Workflow Design","Operations Analysis","Cost Reduction","Process Automation"], softSkills:["Analytical Thinking","Problem Solving","Strategic Thinking"], impact:{type:"savings",label:"Annual Cost Savings",value:"$5M",icon:"💾"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
   nec_training:{ isNew:true, text:"Led end-user training and change management sessions following ERP system rollout across three client divisions; increased system adoption by 40% and reduced support tickets by 25% within the first quarter", roleLabels:["Change Management","ERP/IT Systems","Consulting","Operations","Project Management"], hardSkills:["Change Management","ERP Training","Project Management","Adoption Metrics","Program Design"], softSkills:["Leadership","Communication","Training & Development","Stakeholder Management","Empathy"], impact:{type:"efficiency",label:"System Adoption",value:"+40%",icon:"📱"}, strength:{hasQuantity:true,hasActionVerb:true,hasOutcome:true} },
 };
@@ -169,7 +167,6 @@ const BASELINE_CFG = {
   showCoursework:false, coursework:[],
   showWasedaDesc:true, showTianjinDesc:true,
   includeEqtyLyfe:false, eqtyLyfeRole:"intern", eqtyLyfeBullets:[],
-  includeThinkie:false, thinkieBullets:["thinkie1","thinkie2"],
   deloitteMerged:true,
   deloitteSABullets:["dsa1_std","dsa2","dsa3","dsa4","dsa5"],
   deloitteAssocBullets:["da1_std","da2"],
@@ -255,8 +252,6 @@ const PRESETS = {
     objective:"CFA III candidate, CPA (Washington), and  Duke MBA with 10+ years of M&A due diligence, capital structure optimization, and pre-IPO audit experience. Proven record identifying $3.6M in financial fraud and supporting $10M equity raises — ready to drive strategic deal execution." },
   "BizOps / Operations": { ...BASELINE_CFG, showCoursework:true,
     coursework:["Operations Management","Foundations of Strategy","Data Analytics for Business","Negotiation","Leadership, Ethics & Organizations","Sustainable Operations"],
-    includeThinkie:true, thinkieBullets:["thinkie1","thinkie2"],
-    showHobbies:false, communityVariant:"short",
     deloitteSABullets:["dsa1_std","dsa_lean","dsa2","dsa5","dsa_cfo"],
     deloitteAssocBullets:["da2","da1_std"], necBullets:["nec2","nec_training","nec_erp"],
     objective:" CPA (Washington), CFA  III candidate, and Duke MBA with 10+ years of operations and process improvement across consulting, ERP implementation, and BPR. Delivered $5M in annual savings through workflow redesign and drove 40% system adoption improvement through change management.",
@@ -342,7 +337,7 @@ const CO_COLOR  = { "Duke Capital Partners":"#2563eb","EQTY LYFE":"#db2777","Del
 
 function getAllBulletIds(cfg) {
   if (!cfg) return [];
-  return ["dc1","dc2",...(cfg.includeThinkie?(cfg.thinkieBullets||[]):[]),...(cfg.includeEqtyLyfe?(cfg.eqtyLyfeBullets||[]):[]),...(cfg.deloitteSABullets||[]),...(cfg.deloitteAssocBullets||[]),...(cfg.necBullets||[])];
+  return ["dc1","dc2",...(cfg.includeEqtyLyfe?(cfg.eqtyLyfeBullets||[]):[]),...(cfg.deloitteSABullets||[]),...(cfg.deloitteAssocBullets||[]),...(cfg.necBullets||[])];
 }
 function getResumeText(cfg) {
   return [...getAllBulletIds(cfg).map(id=>B[id]?.text||""), SKILLS_TEXT[cfg.skillsVariant]||"", COMMUNITY[cfg.communityVariant]||""].join(" ").toLowerCase();
@@ -369,7 +364,6 @@ function estimatePage(cfg) {
   lines += (cfg.showCoursework&&cfg.coursework?.length>0) ? 1.5 : 0;
   lines += cfg.showWasedaDesc ? 1 : 0;
   lines += cfg.showTianjinDesc ? 1 : 0;
-  lines += cfg.includeThinkie ? 3+(cfg.thinkieBullets?.length||0)*1.4 : 0;
   lines += cfg.includeEqtyLyfe ? 3+(cfg.eqtyLyfeBullets?.length||0)*1.4 : 0;
   lines += (cfg.deloitteSABullets||[]).length * 1.45;
   lines += cfg.deloitteMerged ? 0 : 0.8;
@@ -825,7 +819,6 @@ function ResumeDoc({cfg,kws,showDiff,overrides}){
     <RSH title="EXPERIENCE"/>
     <RRow left="Duke Capital Partners" right="Durham, NC"/><RRow left="Investment Associate" right="2025–Present" bold={false} italic/>
     <BulletList ids={["dc1","dc2"]} kws={kwsArr} overrides={overrides}/>
-    {cfg.includeThinkie&&cfg.thinkieBullets?.length>0&&<><RRow left="Thinkie System" right="Seattle, WA (Remote)" mt={5}/><RRow left="Digital Marketing Analyst · Mentored Study" right="Sep 2025 – Dec 2025" bold={false} italic/><BulletList ids={cfg.thinkieBullets} kws={kwsArr} overrides={overrides}/></>}
     {cfg.includeEqtyLyfe&&cfg.eqtyLyfeBullets?.length>0&&<><RRow left="EQTY LYFE" right="San Jose, CA (Remote)" mt={5}/><RRow left={cfg.eqtyLyfeRole==="mba"?"MBA Summer Finance Intern":"Finance Intern"} right="2025" bold={false} italic/><BulletList ids={cfg.eqtyLyfeBullets} kws={kwsArr} overrides={overrides}/></>}
     <RRow left="Deloitte Touche Tohmatsu LLC." right="Tokyo, Japan / Sydney, Australia" mt={5}/>
     {cfg.deloitteMerged?<><RRow left="Senior Associate" right="2018–2024" bold={false} italic/><BulletList ids={[...(cfg.deloitteSABullets||[]),...(cfg.deloitteAssocBullets||[])]} kws={kwsArr} overrides={overrides}/></>
@@ -986,7 +979,6 @@ function DiffReportTab({cfg}){
   if(cfg.dukeConcentration) choices.push({label:"Concentration",value:CONC[cfg.dukeConcentration]||cfg.dukeConcentration});
   if(cfg.showCoursework&&cfg.coursework?.length>0) choices.push({label:"Coursework",value:`${cfg.coursework.length}门`});
   choices.push({label:"Deloitte职级",value:cfg.deloitteMerged?"合并 2018–2024":"分开 SA 22-24 / Assoc 18-21"});
-  if(cfg.includeThinkie) choices.push({label:"THINKIE",value:"✅ GEO Analyst"});
   if(cfg.includeEqtyLyfe) choices.push({label:"EQTY LYFE",value:`✅ ${cfg.eqtyLyfeRole==="mba"?"MBA":"Intern"}`});
   if(cfg.skillsVariant!=="standard") choices.push({label:"Skills",value:cfg.skillsVariant});
 
@@ -1176,9 +1168,6 @@ const BULLET_MENU=[
   "  nec_sapdash → SAP dashboard design executive support [ERP/BI]",
   "  nec2 → BPR chemical 80FTE $5M savings",
   "  nec_training → ERP change management +40% adoption [change mgmt]",
-  "THINKIE (optional — only if JD mentions go-to-market, growth strategy, digital strategy, cross-functional ops, or BizOps; never if includeEqtyLyfe is true):",
-  "  thinkie1 → keyword gap analysis 101 terms 70+ articles topic cluster 3 audiences 50-article roadmap AI visibility",
-  "  thinkie2 → AI citation framework 8 platforms 45 tools visibility scoring methodology GEO",
 ].join("\n");
 
 async function callAI(jd,cancelRef){
@@ -1193,14 +1182,12 @@ BULLET MENU:\n${BULLET_MENU}
 COURSES (pick 4-6 relevant or []): ${courseList}
 
 OUTPUT JSON ONLY:
-{"contact":"personal","dukeConcentration":"decision","showCoursework":false,"coursework":[],"showWasedaDesc":true,"showTianjinDesc":true,"includeEqtyLyfe":false,"eqtyLyfeRole":"intern","eqtyLyfeBullets":[],"includeThinkie":false,"thinkieBullets":["thinkie1","thinkie2"],"deloitteMerged":false,"deloitteSABullets":["dsa1_std","dsa2","dsa3","dsa4","dsa5"],"deloitteAssocBullets":["da1_std","da2"],"necBullets":["nec1","nec2"],"skillsVariant":"standard","showHobbies":true,"communityVariant":"full","jdKeywords":["kw1","kw2","kw1 variant","kw2 variant"],"objective":"2 sentences 50 words max.","notes":"one line"}
+{"contact":"personal","dukeConcentration":"decision","showCoursework":false,"coursework":[],"showWasedaDesc":true,"showTianjinDesc":true,"includeEqtyLyfe":false,"eqtyLyfeRole":"intern","eqtyLyfeBullets":[],"deloitteMerged":false,"deloitteSABullets":["dsa1_std","dsa2","dsa3","dsa4","dsa5"],"deloitteAssocBullets":["da1_std","da2"],"necBullets":["nec1","nec2"],"skillsVariant":"standard","showHobbies":true,"communityVariant":"full","jdKeywords":["kw1","kw2","kw1 variant","kw2 variant"],"objective":"2 sentences 50 words max.","notes":"one line"}
 
 RULES:
 - deloitteSABullets: 4-5, slot-1 must be dsa1_std/dsa1_esg/dsa1_esg2
 - deloitteAssocBullets: 1-2, slot-1 must be da1_std/da1_esg/da1_esg2
 - necBullets: always nec1+nec2 minimum
-- includeThinkie: true ONLY if JD explicitly mentions go-to-market, growth strategy, digital strategy, cross-functional operations, or BizOps; false for pure finance, accounting, analytics, or data engineering; also false if includeEqtyLyfe is true (space constraint)
-- thinkieBullets: default ["thinkie1","thinkie2"]; use ["thinkie1"] only if space is tight
 - dukeConcentration: decision|HSM|both|null
 - skillsVariant: standard|enterprise|analytics
 - jdKeywords: 12-18 terms — for each concept include MULTIPLE surface forms (e.g. "financial modeling" AND "financial model" AND "financial analysis") to maximize ATS matching recall
@@ -1425,14 +1412,6 @@ function TailorTab(){
         <input type="checkbox" checked={cfg.eqtyLyfeBullets?.includes(id)} onChange={()=>{const a=cfg.eqtyLyfeBullets||[];setCfg({...cfg,eqtyLyfeBullets:a.includes(id)?a.filter(x=>x!==id):[...a,id]});}} style={{cursor:"pointer"}}/>
         <IdBadge id={id}/><span style={{fontSize:10,color:T.text3}}>{B[id]?.text?.slice(0,50)}…</span>
       </label>)}
-      <label style={{display:"flex",alignItems:"center",gap:7,cursor:"pointer",marginBottom:7}}>
-        <input type="checkbox" checked={!!cfg.includeThinkie} onChange={()=>toggleSpecial("includeThinkie")} style={{cursor:"pointer"}}/>
-        <span style={{fontSize:11.5,fontWeight:600}}>THINKIE</span>
-      </label>
-      {cfg.includeThinkie&&["thinkie1","thinkie2"].map(id=><label key={id} style={{display:"flex",gap:6,alignItems:"center",marginLeft:18,marginBottom:3,cursor:"pointer"}}>
-        <input type="checkbox" checked={cfg.thinkieBullets?.includes(id)} onChange={()=>{const a=cfg.thinkieBullets||[];setCfg({...cfg,thinkieBullets:a.includes(id)?a.filter(x=>x!==id):[...a,id]});}} style={{cursor:"pointer"}}/>
-        <IdBadge id={id}/><span style={{fontSize:10,color:T.text3}}>{B[id]?.text?.slice(0,50)}…</span>
-      </label>}}
       {MANUAL_SECTIONS.map(sec=>{
         const sel=(sec.key==="SA"?cfg.deloitteSABullets:sec.key==="Assoc"?cfg.deloitteAssocBullets:cfg.necBullets)||[];
         return <div key={sec.key} style={{marginBottom:7}}>
