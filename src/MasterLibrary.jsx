@@ -1432,7 +1432,7 @@ function TailorTab(){
       {cfg.includeThinkie&&["thinkie1","thinkie2"].map(id=><label key={id} style={{display:"flex",gap:6,alignItems:"center",marginLeft:18,marginBottom:3,cursor:"pointer"}}>
         <input type="checkbox" checked={cfg.thinkieBullets?.includes(id)} onChange={()=>{const a=cfg.thinkieBullets||[];setCfg({...cfg,thinkieBullets:a.includes(id)?a.filter(x=>x!==id):[...a,id]});}} style={{cursor:"pointer"}}/>
         <IdBadge id={id}/><span style={{fontSize:10,color:T.text3}}>{B[id]?.text?.slice(0,50)}…</span>
-      </label>}}
+      </label>)}
       {MANUAL_SECTIONS.map(sec=>{
         const sel=(sec.key==="SA"?cfg.deloitteSABullets:sec.key==="Assoc"?cfg.deloitteAssocBullets:cfg.necBullets)||[];
         return <div key={sec.key} style={{marginBottom:7}}>
