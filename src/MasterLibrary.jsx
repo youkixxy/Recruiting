@@ -182,30 +182,30 @@ const PRESETS = {
     coursework:["Corporate Finance","Valuation and Fundamental Analysis","Finance Data Analytics","Forecasting","Operations Management","Foundations of Strategy"],
     deloitteSABullets:["dsa1_std","dsa_agile","dsa2","dsa_aop","dsa5"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec1","nec2"],
-    objective:"CFA Level III candidate, CPA, and Duke MBA (Decision Sciences) with 10+ years of international experience in financial planning, AOP, and cross-functional reporting. Proven expertise in variance analysis and automation to drive FP&A excellence." },
+    objective:"CFA Level III candidate, CPA (Washington), and  Duke MBA (Decision Sciences) with 10+ years of international experience in financial planning, AOP, and cross-functional reporting. Proven expertise in variance analysis and automation to drive FP&A excellence." },
   "Investment Banking": { ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
     coursework:["Corporate Finance","Valuation and Fundamental Analysis","Investment","Corporate Restructuring","Global Asset Allocation","Entrepreneurial Finance & Venture Capital"],
     deloitteSABullets:["dsa1_std","dsa3","dsa4","dsa2","dsa5"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec1","nec2"],
     showHobbies:false, communityVariant:"short",
-    objective:"CFA Level III candidate, CPA, and Duke MBA with 10+ years of financial analysis and audit across tech, manufacturing, and healthcare. Demonstrated expertise in pre-IPO audit, capital structure optimization, and M&A due diligence." },
+    objective:"CFA Level III candidate, CPA (Washington), and  Duke MBA with 10+ years of financial analysis and audit across tech, manufacturing, and healthcare. Demonstrated expertise in pre-IPO audit, capital structure optimization, and M&A due diligence." },
   "Consulting": { ...BASELINE_CFG, showCoursework:true,
     coursework:["Foundations of Strategy","Managerial Economics","Operations Management","Data Analytics for Business","Negotiation","Corporate Finance"],
     deloitteSABullets:["dsa1_std","dsa_lean","dsa_cfo","dsa2","dsa5"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec2","nec_training"],
-    objective:"CPA, CFA III candidate, and Duke MBA with 10+ years of management consulting and audit at Deloitte. Proven track record in Lean Six Sigma, C-suite advisory, and cross-functional team leadership across tech, healthcare, and manufacturing clients." },
+    objective:" CPA (Washington), CFA  III candidate, and Duke MBA with 10+ years of management consulting and audit at Deloitte. Proven track record in Lean Six Sigma, C-suite advisory, and cross-functional team leadership across tech, healthcare, and manufacturing clients." },
   "Data Analytics": { ...BASELINE_CFG, showCoursework:true, showTianjinDesc:false,
     coursework:["Data Analytics for Business","Transforming Tech Analytics with Machine Intelligence","Forecasting","Finance Data Analytics","Information Management","Foundations of Business Analytics"],
     deloitteSABullets:["dsa1_std","dsa2_analytics","dsa4","dsa_aop_analytics","dsa5"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec1","nec_predictive"],
     skillsVariant:"analytics",
-    objective:"Duke MBA (Decision Sciences), USCPA, and CFA III candidate with 10+ years of analytics and finance transformation. Expert in SQL, Power BI, and Python-driven automation — proven at reducing manual workload and delivering data-driven insights." },
+    objective:"Duke MBA (Decision Sciences), USCPA (Washington), and CFA III candidate with 10+ years of analytics and finance transformation. Expert in SQL, Power BI, and Python-driven automation — proven at reducing manual workload and delivering data-driven insights." },
   "Healthcare Finance": { ...BASELINE_CFG, dukeConcentration:"HSM", showCoursework:true,
     coursework:["Medical Device Strategy","Biotech and Pharma Strategy","Healthcare Institutions, Systems & Policy","Corporate Finance","Sustainability Reporting & Analysis","Finance Data Analytics"],
     deloitteSABullets:["dsa1_esg","dsa_lean","dsa3","dsa4","dsa5"],
     deloitteAssocBullets:["da1_esg","da2"], necBullets:["nec1","nec2"],
     skillsVariant:"enterprise", showHobbies:false, communityVariant:"short",
-    objective:"USCPA, CFA III candidate, and Duke MBA with Health Sector Management certificate and 10+ years of financial analysis in healthcare and high-tech sectors. Specialized in healthcare M&A due diligence, ESG reporting, and data-driven process optimization." },
+    objective:"US CPA (Washington), CFA  III candidate, and Duke MBA with Health Sector Management certificate and 10+ years of financial analysis in healthcare and high-tech sectors. Specialized in healthcare M&A due diligence, ESG reporting, and data-driven process optimization." },
   "PE / VC": { ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
     coursework:["Investment","Entrepreneurial Finance & Venture Capital","Corporate Finance","Valuation and Fundamental Analysis","Global Asset Allocation","Raising Capital & FinTech"],
     includeEqtyLyfe:true, eqtyLyfeRole:"mba", eqtyLyfeBullets:["eq1","eq2"],
@@ -213,29 +213,29 @@ const PRESETS = {
     deloitteSABullets:["dsa1_std","dsa3","dsa4","dsa2","dsa5"],
     deloitteAssocBullets:["da1_std"], necBullets:["nec1","nec2"],
     showHobbies:false, communityVariant:"short",
-    objective:"CFA Level III candidate, CPA, and Duke MBA with $2M in deployed capital across 20+ company screenings at Duke Capital Partners. Brings 10+ years of financial due diligence, IPO audit, and ERP expertise to support portfolio management and deal execution." },
+    objective:"CFA Level III candidate, CPA (Washington), and  Duke MBA with $2M in deployed capital across 20+ company screenings at Duke Capital Partners. Brings 10+ years of financial due diligence, IPO audit, and ERP expertise to support portfolio management and deal execution." },
   "ESG / Sustainability": { ...BASELINE_CFG, dukeConcentration:"HSM", showCoursework:true,
     coursework:["Sustainability Reporting & Analysis","Healthcare Institutions, Systems & Policy","Foundations of Strategy","Data Analytics for Business","Sustainable Operations","International Finance"],
     deloitteSABullets:["dsa1_esg","dsa2_analytics","dsa_lean","dsa4","dsa5"],
     deloitteAssocBullets:["da1_esg2","da2"], necBullets:["nec1","nec2"],
     skillsVariant:"enterprise", showHobbies:false,
-    objective:"CPA, CFA III candidate, and Duke MBA with Health Sector Management certificate bringing 10+ years of ESG analytics, sustainability reporting, and audit expertise. Experienced in leveraging data-driven insights to improve corporate sustainability disclosures and support responsible investment decisions." },
+    objective:" CPA (Washington), CFA  III candidate, and Duke MBA with Health Sector Management certificate bringing 10+ years of ESG analytics, sustainability reporting, and audit expertise. Experienced in leveraging data-driven insights to improve corporate sustainability disclosures and support responsible investment decisions." },
   "Business Analyst": { ...BASELINE_CFG, showCoursework:true,
     coursework:["Information Management","Data Analytics for Business","Operations Management","Foundations of Strategy","Leadership, Ethics & Organizations","Managerial Economics"],
     deloitteSABullets:["dsa1_std","dsa_lean","dsa_cfo","dsa2","dsa5"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec_erp","nec2","nec_training"],
-    objective:"CPA, CFA III candidate, and Duke MBA with 10+ years of business analysis, ERP implementation, and process optimization. Expert in translating complex business requirements into actionable system specifications and driving stakeholder alignment across cross-functional teams." },
+    objective:" CPA (Washington), CFA  III candidate, and Duke MBA with 10+ years of business analysis, ERP implementation, and process optimization. Expert in translating complex business requirements into actionable system specifications and driving stakeholder alignment across cross-functional teams." },
   "Financial Analyst": { ...BASELINE_CFG, showCoursework:true,
     coursework:["Corporate Finance","Valuation and Fundamental Analysis","Finance Data Analytics","Forecasting","Financial Management","Tax for Global Management"],
     deloitteSABullets:["dsa1_std","dsa2","dsa_aop","dsa4","dsa5"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec1","nec2"],
-    objective:"CFA Level III candidate, USCPA, and Duke MBA with 10+ years of financial analysis, variance reporting, and audit across tech, manufacturing, and healthcare. Proven expertise in building data-driven financial models and delivering executive-level insights." },
+    objective:"CFA Level III candidate, USCPA (Washington), and Duke MBA with 10+ years of financial analysis, variance reporting, and audit across tech, manufacturing, and healthcare. Proven expertise in building data-driven financial models and delivering executive-level insights." },
   "Tech Company Finance": { ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
     coursework:["Data Analytics for Business","Finance Data Analytics","Corporate Finance","Raising Capital & FinTech","Information Management","Foundations of Strategy"],
     deloitteSABullets:["dsa1_std","dsa2_analytics","dsa3","dsa4","dsa5"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec1","nec_sapdash"],
     skillsVariant:"enterprise",
-    objective:"Duke MBA (Decision Sciences), USCPA, and CFA III candidate with 10+ years of finance and analytics at Deloitte and NEC. Brings deep expertise in Power BI, SQL, and ERP automation to drive data-driven financial decision-making at scale in tech environments." },
+    objective:"Duke MBA (Decision Sciences), USCPA (Washington), and CFA III candidate with 10+ years of finance and analytics at Deloitte and NEC. Brings deep expertise in Power BI, SQL, and ERP automation to drive data-driven financial decision-making at scale in tech environments." },
   "Startup Strategic Finance": { ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
     coursework:["Entrepreneurial Finance & Venture Capital","Raising Capital & FinTech","Corporate Finance","Forecasting","Entrepreneurial Mindset & Action","Innovation and Cryptoventures"],
     includeEqtyLyfe:true, eqtyLyfeRole:"mba", eqtyLyfeBullets:["eq1","eq2"],
@@ -243,18 +243,18 @@ const PRESETS = {
     deloitteSABullets:["dsa1_std","dsa2","dsa3","dsa_agile","dsa5"],
     deloitteAssocBullets:["da1_std"], necBullets:["nec1","nec2"],
     skillsVariant:"enterprise", showHobbies:true, communityVariant:"short",
-    objective:"CFA III candidate, CPA, and Duke MBA with hands-on startup finance experience building multi-year forecasts and unit economics models for an early-stage fintech, and $2M deployed capital at Duke Capital Partners. Brings institutional-grade rigor to high-growth environments." },
+    objective:"CFA III candidate, CPA (Washington), and  Duke MBA with hands-on startup finance experience building multi-year forecasts and unit economics models for an early-stage fintech, and $2M deployed capital at Duke Capital Partners. Brings institutional-grade rigor to high-growth environments." },
   "Corporate Development": { ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
     coursework:["Corporate Finance","Valuation and Fundamental Analysis","Investment","Corporate Restructuring","Global Asset Allocation","Entrepreneurial Finance & Venture Capital"],
     deloitteSABullets:["dsa1_std","dsa3","dsa4","dsa2","dsa_cfo"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec1","nec2"],
     showHobbies:false, communityVariant:"short",
-    objective:"CFA III candidate, CPA, and Duke MBA with 10+ years of M&A due diligence, capital structure optimization, and pre-IPO audit experience. Proven record identifying $3.6M in financial fraud and supporting $10M equity raises — ready to drive strategic deal execution." },
+    objective:"CFA III candidate, CPA (Washington), and  Duke MBA with 10+ years of M&A due diligence, capital structure optimization, and pre-IPO audit experience. Proven record identifying $3.6M in financial fraud and supporting $10M equity raises — ready to drive strategic deal execution." },
   "BizOps / Operations": { ...BASELINE_CFG, showCoursework:true,
     coursework:["Operations Management","Foundations of Strategy","Data Analytics for Business","Negotiation","Leadership, Ethics & Organizations","Sustainable Operations"],
     deloitteSABullets:["dsa1_std","dsa_lean","dsa2","dsa5","dsa_cfo"],
     deloitteAssocBullets:["da2","da1_std"], necBullets:["nec2","nec_training","nec_erp"],
-    objective:"CPA, CFA III candidate, and Duke MBA with 10+ years of operations and process improvement across consulting, ERP implementation, and BPR. Delivered $5M in annual savings through workflow redesign and drove 40% system adoption improvement through change management.",
+    objective:" CPA (Washington), CFA  III candidate, and Duke MBA with 10+ years of operations and process improvement across consulting, ERP implementation, and BPR. Delivered $5M in annual savings through workflow redesign and drove 40% system adoption improvement through change management.",
     keywords:["process improvement","operations","workflow","lean","six sigma","BPR","efficiency","change management","ERP","stakeholder","cost savings","headcount","automation","cross-functional","implementation"] },
   "Investment Analysis": {
     ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
@@ -262,14 +262,14 @@ const PRESETS = {
     deloitteSABullets:["dsa1_std","dsa3","dsa4","dsa2","dsa_cfo"],
     deloitteAssocBullets:["da1_std","da2"], necBullets:["nec1","nec_sapdash"],
     skillsVariant:"standard", showHobbies:false, communityVariant:"short",
-    objective:"CFA Level III candidate, Washington CPA, and Duke MBA with 10+ years of financial analysis and valuation across tech, healthcare, and manufacturing. Proven expertise in investment screening, financial modeling, and data-driven analytical insights to support buy/sell/hold decisions." },
+    objective:"CFA Level III candidate, Washington CPA (Washington), and Duke MBA with 10+ years of financial analysis and valuation across tech, healthcare, and manufacturing. Proven expertise in investment screening, financial modeling, and data-driven analytical insights to support buy/sell/hold decisions." },
   "Risk Analysis": {
     ...BASELINE_CFG, showCoursework:true, showWasedaDesc:false,
     coursework:["Corporate Finance","Valuation and Fundamental Analysis","Data Analytics for Business","Finance Data Analytics","Tax for Global Management","Foundations of Strategy"],
     deloitteSABullets:["dsa1_std","dsa4","dsa_lean","dsa2","dsa_cfo"],
     deloitteAssocBullets:["da1_esg2","da2"], necBullets:["nec1","nec_erp"],
     skillsVariant:"standard", showHobbies:false, communityVariant:"short",
-    objective:"Washington CPA, CFA III candidate, and Duke MBA with 10+ years of risk identification, internal controls, and audit expertise at Deloitte. Proven ability to detect $3.6M financial fraud, optimize controls frameworks, and deliver risk insights to C-suite stakeholders across multinational environments." },
+    objective:"Washington  CPA (Washington), CFA  III candidate, and Duke MBA with 10+ years of risk identification, internal controls, and audit expertise at Deloitte. Proven ability to detect $3.6M financial fraud, optimize controls frameworks, and deliver risk insights to C-suite stakeholders across multinational environments." },
 };
 
 // ── Per-preset keyword sets (for instant match analysis without JD) ──
@@ -697,7 +697,7 @@ function DashboardTab({cfg}){
     {id:"roles",label:"岗位标签",value:ALL_ROLES.length,sub:"4大类",color:"#059669",detail:()=><div>{Object.entries(ROLE_TAXONOMY).map(([cat,roles])=><div key={cat} style={{marginBottom:8}}><div style={{fontSize:11,fontWeight:700,color:T.accent,marginBottom:4}}>{cat}</div><div style={{display:"flex",flexWrap:"wrap",gap:5}}>{roles.filter(r=>ALL_ROLES.includes(r)).map(r=><RoleChip key={r} l={r}/>)}</div></div>)}</div>},
     {id:"hard",label:"Hard Skills",value:ALL_HARD.length,sub:"4大类",color:"#7c3aed",detail:()=><div>{Object.entries(HARD_TAXONOMY).map(([cat,skills])=><div key={cat} style={{marginBottom:8}}><div style={{fontSize:11,fontWeight:700,color:"#1e40af",marginBottom:4}}>{cat}</div><div style={{display:"flex",flexWrap:"wrap",gap:5}}>{skills.filter(s=>ALL_HARD.includes(s)).map(s=><HardChip key={s} l={s}/>)}</div></div>)}</div>},
     {id:"soft",label:"Soft Skills",value:ALL_SOFT.length,sub:"3大类",color:"#d97706",detail:()=><div>{Object.entries(SOFT_TAXONOMY).map(([cat,skills])=><div key={cat} style={{marginBottom:8}}><div style={{fontSize:11,fontWeight:700,color:"#9a3412",marginBottom:4}}>{cat}</div><div style={{display:"flex",flexWrap:"wrap",gap:5}}>{skills.filter(s=>ALL_SOFT.includes(s)).map(s=><SoftChip key={s} l={s}/>)}</div></div>)}</div>},
-    {id:"certs",label:"证书",value:5,sub:"Finance + Tech",color:"#0891b2",detail:()=><div style={{display:"flex",flexDirection:"column",gap:6}}>{["CFA Exam Level III Candidate","USCPA, Licensed January 2022","AWS Certified Solutions Architect – Associate","Oracle Certified Professional, Oracle Master Gold 11g","Fundamental & Applied IT Engineer (IPA Japan) – Passed"].map(c=><div key={c} style={{fontSize:12,color:T.text}}>{c}</div>)}</div>},
+    {id:"certs",label:"证书",value:5,sub:"Finance + Tech",color:"#0891b2",detail:()=><div style={{display:"flex",flexDirection:"column",gap:6}}>{["CFA Exam Level III Candidate","USCPA (Washington), Licensed January 2022","AWS Certified Solutions Architect – Associate","Oracle Certified Professional, Oracle Master Gold 11g","Fundamental & Applied IT Engineer (IPA Japan) – Passed"].map(c=><div key={c} style={{fontSize:12,color:T.text}}>{c}</div>)}</div>},
     {id:"courses",label:"课程",value:COURSE_NAMES.length,sub:"完整成绩单",color:"#be185d",detail:()=><div style={{display:"flex",flexWrap:"wrap",gap:5}}>{COURSE_NAMES.map(n=><div key={n} style={{background:"#f8faff",border:`1px solid ${T.border}`,borderRadius:4,padding:"2px 7px",fontSize:10.5,color:T.text}}>{n}</div>)}</div>},
   ];
 
@@ -803,18 +803,18 @@ function PlainList({items,kws}){return <ul style={{margin:"2px 0 0",paddingLeft:
 function ResumeDoc({cfg,kws,showDiff,overrides}){
   const kwsArr=kws||[];
   const contact=cfg.contact==="duke"?"xi.yang@duke.edu  •  (984) 335-0494  •  Durham, NC":"Durham, NC 27708  |  (984) 335-0494  |  xyang.career@gmail.com  |  linkedin.com/in/xyang0";
-  const concStr=cfg.dukeConcentration?`, ${CONC[cfg.dukeConcentration]||""}`:"";
+  const concStr=", Decision Sciences Concentration, Health Sector Management (HSM)";
   return <div id="resume-print" style={{fontFamily:"Georgia,'Times New Roman',serif",background:"#fff",padding:"32px 40px",fontSize:10.5,color:"#111",lineHeight:1.35}}>
     <div style={{textAlign:"center",marginBottom:6}}><div style={{fontSize:16,fontWeight:700,letterSpacing:1.2}}>XI (SHAWN) YANG, CPA</div><div style={{fontSize:9.3,marginTop:3,color:"#444"}}>{contact}</div></div>
     {cfg.objective&&<><RSH title="OBJECTIVE"/><div style={{fontSize:9.7,lineHeight:1.5,color:"#111",paddingBottom:2}}>{hlKws(cfg.objective,kwsArr)}</div></>}
     <RSH title="EDUCATION"/>
     <RRow left="DUKE UNIVERSITY, The Fuqua School of Business" right="Durham, NC"/>
-    <RRow left={`Master of Business Administration${concStr}`} right="May 2026" bold={false}/>
-    <div style={{fontSize:9.5}}>GPA: 3.85/4; Merit-based scholarship; Dean's list; Finance Club; Tech Club; Consulting Club</div>
+    <RRow left={`Master of Business Administration${concStr}`} right="Aug 2024 – May 2026" bold={false}/>
+    <div style={{fontSize:9.5}}>GPA: 3.85/4; Fuqua Scholar (top 10%); Merit-based scholarship; Dean's list; Finance Club; Tech Club; Consulting Club</div>
     {cfg.showCoursework&&cfg.coursework?.length>0&&<div style={{fontSize:9.5}}>Relevant Coursework: {cfg.coursework.join(", ")}</div>}
-    <RRow left="WASEDA UNIVERSITY" right="Tokyo, Japan" mt={4}/><RRow left="Master of Arts in Economics" right="Mar 2015" bold={false}/>
+    <RRow left="WASEDA UNIVERSITY" right="Tokyo, Japan" mt={4}/><RRow left="Master of Arts in Economics" right="Apr 2013 – Jun 2015" bold={false}/>
     {cfg.showWasedaDesc&&<div style={{fontSize:9.5}}>Applied econometric models to analyze cross-cultural market trends; Active member of Intercultural Communication Center; planned 10+ cross-culture-exchange events, engaging 10+ sponsors</div>}
-    <RRow left="TIANJIN UNIVERSITY OF FINANCE AND ECONOMICS" right="Tianjin, China" mt={4}/><RRow left="Bachelor of Arts in Japanese Language & Accounting" right="Jun 2012" bold={false}/>
+    <RRow left="TIANJIN UNIVERSITY OF FINANCE AND ECONOMICS" right="Tianjin, China" mt={4}/><RRow left="Bachelor of Arts in Japanese Language & Accounting" right="Sep 2008 – Jun 2012" bold={false}/>
     {cfg.showTianjinDesc&&<div style={{fontSize:9.5}}>Awarded first-honor academic-based scholarship (top 5%); Outstanding student leader scholarship</div>}
     <RSH title="EXPERIENCE"/>
     <RRow left="Duke Capital Partners" right="Durham, NC"/><RRow left="Investment Associate" right="2025–Present" bold={false} italic/>
@@ -1283,7 +1283,7 @@ function TailorTab(){
   const [matchData,setMatchData]=useState(null);
   const [localScores,setLocalScores]=useState(null);
   const [activePreset,setActivePreset]=useState("FP&A");
-  const [manualOpen,setManualOpen]=useState(false);
+  const [manualOpen,setManualOpen]=useState(true);
   const [customPresets,setCustomPresets]=useState({});
   const [savePresetName,setSavePresetName]=useState("");
   const [bulletOverrides,setBulletOverrides]=useState({});
@@ -1465,7 +1465,7 @@ function TailorTab(){
   return <div style={{display:"flex",height:"100%",overflow:"hidden"}}>
 
     {/* ── LEFT (270px) — presets by category + JD + controls ── */}
-    <div style={{width:270,flexShrink:0,borderRight:`1px solid ${T.border}`,display:"flex",flexDirection:"column",overflow:"hidden"}}>
+    <div style={{width:310,flexShrink:0,borderRight:`1px solid ${T.border}`,display:"flex",flexDirection:"column",overflow:"hidden"}}>
       <div style={{flex:1,overflowY:"auto",padding:"10px 12px",display:"flex",flexDirection:"column",gap:8}}>
         {/* Presets grouped by category */}
         <div>
@@ -1535,10 +1535,16 @@ function TailorTab(){
           <div style={{fontSize:8,fontWeight:700,color:T.accent,letterSpacing:1.5,textTransform:"uppercase",marginBottom:2}}>说明</div>
           <div style={{fontSize:10.5,color:"#1e40af",lineHeight:1.5}}>{notes}</div>
         </div>}
-        {cfg&&!loading&&page&&<div style={{background:page.ok?"#f0fdf4":"#fffbeb",border:`1px solid ${page.ok?"#bbf7d0":"#fde68a"}`,borderRadius:7,padding:"6px 10px"}}>
-          <span style={{fontSize:11,fontWeight:700,color:page.ok?"#166534":"#92400e"}}>{page.ok?"✅ 预计1页":`⚠️ 超出约${page.overflow}行`}</span>
-          {!page.ok&&<span style={{fontSize:10,color:"#92400e",marginLeft:7}}>建议精简NEC/隐藏Tianjin</span>}
-        </div>}
+
+        <div style={{height:1,background:T.border}}/>
+
+        {/* Manual edit — default open */}
+        <button onClick={()=>setManualOpen(o=>!o)} style={{background:manualOpen?"#f5f3ff":"#fafafa",border:`1px solid ${manualOpen?"#ddd6fe":T.border}`,borderRadius:7,padding:"6px 11px",display:"flex",alignItems:"center",justifyContent:"space-between",cursor:"pointer",fontFamily:"inherit"}}>
+          <span style={{fontSize:11,fontWeight:700,color:manualOpen?"#6d28d9":T.text2}}>🎛 手动调整 Bullets</span>
+          <span style={{fontSize:10,color:T.text3}}>{Object.keys(bulletOverrides).length>0?`✏️${Object.keys(bulletOverrides).length} · `:""}{manualOpen?"▲":"▼"}</span>
+        </button>
+        {manualOpen&&<div style={{border:"1px solid #ddd6fe",borderRadius:8,padding:"10px 11px",background:"#faf5ff",maxHeight:400,overflowY:"auto"}}><ManualPanel/></div>}
+
       </div>
     </div>
 
@@ -1551,6 +1557,7 @@ function TailorTab(){
           <button onClick={()=>setShowKwHl(h=>!h)} style={{background:showKwHl?"#fefce8":"none",border:`1px solid ${showKwHl?"#fde047":T.border}`,borderRadius:5,padding:"3px 8px",color:showKwHl?"#713f12":T.text3,fontSize:10.5,cursor:"pointer",fontFamily:"inherit",fontWeight:showKwHl?700:400}}>🔍 高亮 {showKwHl?"ON":"OFF"}</button>
           {Object.keys(bulletOverrides).length>0&&<span style={{fontSize:10,color:"#7c3aed",background:"#f5f3ff",border:"1px solid #ddd6fe",borderRadius:4,padding:"2px 6px"}}>✏️{Object.keys(bulletOverrides).length}</span>}
           <button onClick={download} style={{marginLeft:"auto",background:T.accentBg,border:"1px solid #bfdbfe",borderRadius:5,padding:"3px 9px",color:T.accent,fontSize:10.5,cursor:"pointer",fontFamily:"inherit",fontWeight:600}}>⬇ 下载</button>
+          {page&&<span style={{fontSize:10.5,fontWeight:700,color:page.ok?"#166534":"#92400e",background:page.ok?"#f0fdf4":"#fffbeb",border:`1px solid ${page.ok?"#bbf7d0":"#fde68a"}`,borderRadius:5,padding:"3px 8px",flexShrink:0}}>{page.ok?"✅ 1页":`⚠️ +${page.overflow}行`}</span>}
         </>}
       </div>
       {/* Keyword bar */}
