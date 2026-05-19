@@ -1490,14 +1490,6 @@ function TailorTab(){
           ))}
         </div>
 
-        <div style={{height:1,background:T.border}}/>
-
-        {/* Manual edit */}
-        <button onClick={()=>setManualOpen(o=>!o)} style={{background:manualOpen?"#f5f3ff":"#fafafa",border:`1px solid ${manualOpen?"#ddd6fe":T.border}`,borderRadius:7,padding:"6px 11px",display:"flex",alignItems:"center",justifyContent:"space-between",cursor:"pointer",fontFamily:"inherit"}}>
-          <span style={{fontSize:11,fontWeight:700,color:manualOpen?"#6d28d9":T.text2}}>🎛 手动调整 Bullets</span>
-          <span style={{fontSize:10,color:T.text3}}>{Object.keys(bulletOverrides).length>0?`✏️${Object.keys(bulletOverrides).length} · `:""}{manualOpen?"▲":"▼"}</span>
-        </button>
-        {manualOpen&&<div style={{border:"1px solid #ddd6fe",borderRadius:8,padding:"10px 11px",background:"#faf5ff",maxHeight:360,overflowY:"auto"}}><ManualPanel/></div>}
 
         <div style={{height:1,background:T.border}}/>
 
@@ -1679,7 +1671,7 @@ function CareerProfileTab(){
         <Row label="语言习惯" value="倾向使用模糊表达（I guess / 也许 / 我觉得可能）" note="⚠️ 在决策性节点会降低说服力；可通过脚本化训练改善"/>
         <Row label="结构化后" value="表达质量显著提升" note="使用STAR框架 + 提前准备关键句 = 绕过Cache瓶颈的有效路径"/>
         <div style={{background:"#fef3c7",border:"1px solid #fde68a",borderRadius:8,padding:"10px 14px",fontSize:12,color:"#92400e",marginTop:10}}>
-          <strong>致Consultant：</strong> 工作记忆容量偏小是真实的神经认知特征，非动力问题。能降低实时认知负荷的Coaching策略（脚本化回答、书面优先触达、结构化格式）比泛化社交技能训练更有效。候选人分析深度是真实优势；目标是创造让优势可见的场景。
+          <strong>建议：</strong> 工作记忆容量偏小是真实的神经认知特征，非动力问题。能降低实时认知负荷的Coaching策略（脚本化回答、书面优先触达、结构化格式）比泛化社交技能训练更有效。候选人分析深度是真实优势；目标是创造让优势可见的场景。
         </div>
       </Block>
     </div>}
@@ -1786,7 +1778,7 @@ function CareerProfileTab(){
         </div>
       </Block>
       <div style={{background:"#f8faff",border:`1px solid ${T.border}`,borderRadius:10,padding:"14px 18px",fontSize:11.5,color:T.text2,lineHeight:1.7}}>
-        <div style={{fontWeight:700,color:T.text,marginBottom:6}}>📌 致Consultant的总体建议</div>
+        <div style={{fontWeight:700,color:T.text,marginBottom:6}}>📌 总体建议</div>
         候选人的profile在数量上是充足的（CPA+CFA+MBA+10yr国际经验），真正的障碍是：<br/>
         ① Sponsorship在ATS层面的过滤（结构性问题，需要针对sponsorship-friendly雇主的定向策略）<br/>
         ② 广投策略未充分利用日语/亚太背景这一稀缺竞争优势<br/>
